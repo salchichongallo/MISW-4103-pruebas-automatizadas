@@ -22,3 +22,6 @@ yarn-error.log*
 *.tsbuildinfo
 
 /.nx
+
+.kraken
+/e2e-kraken/reports

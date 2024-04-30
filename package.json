@@ -2,10 +2,12 @@
   "name": "root",
   "private": true,
   "workspaces": [
-    "e2e-cypress"
+    "e2e-cypress",
+    "e2e-kraken"
   ],
   "scripts": {
-    "cy:open": "lerna run cy:open --scope=e2e-cypress",
+    "kraken:test": "lerna run test --scope e2e-kraken",
+    "cy:open": "lerna run cy:open --scope e2e-cypress",
     "format": "prettier -w ."
   },
   "devDependencies": {
