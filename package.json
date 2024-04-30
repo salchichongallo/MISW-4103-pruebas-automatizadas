@@ -1,6 +1,13 @@
 {
   "name": "root",
   "private": true,
-  "workspaces": [],
-  "scripts": {}
+  "workspaces": [
+    "e2e-cypress"
+  ],
+  "scripts": {
+    "cy:open": "lerna run cy:open --scope=e2e-cypress"
+  },
+  "devDependencies": {
+    "lerna": "^8.1.2"
+  }
 }

@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "name": "e2e-cypress",
+  "scripts": {
+    "cy:open": "cypress open"
+  },
+  "devDependencies": {
+    "cypress": "13.8.1"
+  }
+}
