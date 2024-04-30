@@ -12,3 +12,5 @@ Instalación:
 3. Iniciar Ghost: `docker-compose up ghost -d`
 
 Para correr Cypress: `npm run cy:open`
+
+Para correr Kraken: `npm run kraken:test`
