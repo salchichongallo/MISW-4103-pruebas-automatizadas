@@ -5,9 +5,11 @@
     "e2e-cypress"
   ],
   "scripts": {
-    "cy:open": "lerna run cy:open --scope=e2e-cypress"
+    "cy:open": "lerna run cy:open --scope=e2e-cypress",
+    "format": "prettier -w ."
   },
   "devDependencies": {
-    "lerna": "^8.1.2"
+    "lerna": "^8.1.2",
+    "prettier": "3.2.5"
   }
 }
