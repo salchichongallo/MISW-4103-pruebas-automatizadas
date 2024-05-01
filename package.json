@@ -6,7 +6,7 @@
     "e2e-kraken"
   ],
   "scripts": {
-    "postinstall": "node scripts/setup-cypress",
+    "postinstall": "node scripts/postinstall",
     "kraken:test": "lerna run test --scope e2e-kraken",
     "cy:open": "lerna run cy:open --scope e2e-cypress",
     "test:cypress": "lerna run test --scope e2e-cypress",
