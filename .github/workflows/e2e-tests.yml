@@ -28,6 +28,12 @@ jobs:
           npm i -g ghost-cli
           ghost install local --prompt false --auto --no-enable --start
 
+      - name: Run Onboarding
+        uses: cypress-io/github-action@v6.1.0
+        with:
+          browser: chrome
+          env: excludedSpecPattern=cypress/e2e/onboarding.cy.js
+
       - name: Stop Ghost
         if: always()
         run: |
