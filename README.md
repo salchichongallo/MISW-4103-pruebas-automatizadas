@@ -11,6 +11,8 @@ Instalación:
 2. Instalar dependencias: `npm install`
 3. Iniciar Ghost: `docker-compose up ghost -d`
 
+Los credenciales de panel de administración están en los archivos `e2e-cypress/cypress.env.json` y `e2e-kraken/properties.json`
+
 Para correr Cypress: `npm run cy:open`
 
 Para correr Kraken: `npm run kraken:test`
