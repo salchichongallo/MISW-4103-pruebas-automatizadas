@@ -27,7 +27,6 @@ jobs:
         run: |
           mkdir app && cd $_
           npm i -g ghost-cli
-          alias yarn=npm
           ghost install local --prompt false --auto --no-enable --start
 
       - name: Run Onboarding
