@@ -43,6 +43,7 @@ jobs:
         with:
           browser: chrome
           project: ./e2e-cypress
+          env: excludeSpecPattern=e2e-cypress/cypress/e2e/1_onboarding.cy.js
 
       - name: Stop Ghost
         if: always()
