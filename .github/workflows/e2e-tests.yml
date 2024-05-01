@@ -30,4 +30,6 @@ jobs:
 
       - name: Stop Ghost
         if: always()
-        run: ghost stop
+        run: |
+          cd app
+          ghost stop
