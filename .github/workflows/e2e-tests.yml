@@ -32,7 +32,8 @@ jobs:
         uses: cypress-io/github-action@v6.1.0
         with:
           browser: chrome
-          env: excludedSpecPattern=cypress/e2e/onboarding.cy.js
+          project: ./e2e-cypress
+          spec: cypress/e2e/onboarding.cy.js
 
       - name: Stop Ghost
         if: always()
