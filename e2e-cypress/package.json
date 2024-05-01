@@ -3,11 +3,9 @@
   "name": "e2e-cypress",
   "scripts": {
     "cy:open": "cypress open",
-    "test": "cross-env CYPRESS_EXCLUDE_SPEC_PATTERN='cypress/e2e/onboarding.cy.js' cypress run",
-    "onboarding": "cypress run --spec cypress/e2e/onboarding.cy.js"
+    "test": "cypress run"
   },
   "devDependencies": {
-    "cypress": "13.8.1",
-    "cross-env": "7.0.3"
+    "cypress": "13.8.1"
   }
 }

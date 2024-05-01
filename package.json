@@ -10,7 +10,6 @@
     "kraken:test": "lerna run test --scope e2e-kraken",
     "cy:open": "lerna run cy:open --scope e2e-cypress",
     "test:cypress": "lerna run test --scope e2e-cypress",
-    "onboarding": "lerna run onboarding --scope e2e-cypress",
     "format": "prettier -w ."
   },
   "devDependencies": {
