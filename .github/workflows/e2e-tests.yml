@@ -23,17 +23,19 @@ jobs:
         run: npm ci --no-audit --fund false
 
       - name: Install & Start Ghost
+        # alias yarn=npm to cache Ghost dependencies within pipeline
         run: |
           mkdir app && cd $_
           npm i -g ghost-cli
+          alias yarn=npm
           ghost install local --prompt false --auto --no-enable --start
 
       - name: Run Onboarding
         uses: cypress-io/github-action@v6.1.0
         with:
           browser: chrome
-          project: ./e2e-cypress
           spec: cypress/e2e/onboarding.cy.js
+          working-directory: ./e2e-cypress
 
       - name: Stop Ghost
         if: always()
