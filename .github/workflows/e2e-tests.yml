@@ -33,7 +33,7 @@ jobs:
         uses: cypress-io/github-action@v6.1.0
         with:
           browser: chrome
-          spec: e2e-cypress/cypress/e2e/onboarding.cy.js
+          spec: e2e-cypress/cypress/e2e/1_onboarding.cy.js
           project: ./e2e-cypress
 
       - name: Run Cypress Tests
