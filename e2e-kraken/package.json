@@ -6,6 +6,7 @@
     "gen": "kraken-node gen"
   },
   "devDependencies": {
-    "kraken-node": "^1.0.24"
+    "kraken-node": "^1.0.24",
+    "chai": "4.4.1"
   }
 }
