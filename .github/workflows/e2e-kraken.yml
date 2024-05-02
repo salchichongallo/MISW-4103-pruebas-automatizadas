@@ -29,6 +29,13 @@ jobs:
           npm i -g ghost-cli
           ghost install local --prompt false --auto --no-enable --start
 
+      - name: Run Onboarding
+        uses: cypress-io/github-action@v6.1.0
+        with:
+          browser: chrome
+          project: ./e2e-cypress
+          config-file: cypress.config-onboarding.js
+
       - name: Run Kraken Tests
         run: npm run kraken:test
 
