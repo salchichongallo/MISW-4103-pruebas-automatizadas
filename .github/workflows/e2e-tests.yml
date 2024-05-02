@@ -38,12 +38,10 @@ jobs:
 
       - name: Run Cypress Tests
         uses: cypress-io/github-action@v6.1.0
-        env:
-          CYPRESS_EXCLUDE_SPEC_PATTERN: e2e-cypress/cypress/e2e/1_onboarding.cy.js
         with:
           browser: chrome
           project: ./e2e-cypress
-          env: excludeSpecPattern=e2e-cypress/cypress/e2e/1_onboarding.cy.js
+          config-file: cypress.config.js
 
       - name: Stop Ghost
         if: always()
