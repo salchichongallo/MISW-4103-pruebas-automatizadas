@@ -1,4 +1,4 @@
-describe('Crear un Post', () => {
+describe('Create a post', () => {
     beforeEach(() => {
       cy.visit('http://localhost:2368/ghost');
       cy.get('#identification').type(Cypress.env('emailalejandro'));
@@ -9,25 +9,19 @@ describe('Crear un Post', () => {
       cy.wait(2000);
     });
   
-    it('Crea un nuevo Post y verifica su creación en el listado de Posts', () => {
+    it('As a user, I log in, enter the Posts section, create a new Post, without publishing it and it must appear in the drafts list to be published later', () => {
       cy.get('[data-test-nav="posts"]').click();
       cy.wait(2000);
       cy.get('[data-test-new-post-button]').click();
       cy.wait(2000);
-      cy.get('[data-test-editor-title-input]').type('Post de prueba');
+      cy.get('[data-test-editor-title-input]').type('Unpublished in draft list');
       cy.wait(2000);
       cy.get('p[data-koenig-dnd-droppable="true"]').click();
       cy.wait(2000);
-      cy.contains('Publish').click();
-      cy.wait(3000);
-      cy.get('[data-test-button="continue"]').click();
-      cy.wait(1000);
-      cy.get('[data-test-button="confirm-publish"]').click();
+      cy.get('a[data-test-link="posts"]').click();
       cy.wait(2000);
-      cy.get('.gh-back-to-editor').click();
+      cy.get('a[data-test-nav-custom="posts-Drafts"]').click();
       cy.wait(2000);
-      cy.get('[data-test-nav="posts"]').click();
-      cy.wait(2000);
-      cy.get('.gh-content-entry-title').should('contain', 'Post de prueba');
+      cy.get('.gh-content-entry-title').should('contain', 'Unpublished in draft list');
     });
   });
