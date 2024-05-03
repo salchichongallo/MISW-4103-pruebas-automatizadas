@@ -1,9 +1,9 @@
 describe('Create a post', () => {
     beforeEach(() => {
       cy.visit('http://localhost:2368/ghost');
-      cy.get('#identification').type(Cypress.env('emailalejandro'));
+      cy.get('#identification').type(Cypress.env('email'));
       cy.wait(1000);
-      cy.get('#password').type(Cypress.env('passwordalejandro'));
+      cy.get('#password').type(Cypress.env('password'));
       cy.wait(1000);
       cy.get('[data-test-button="sign-in"]').click();
       cy.wait(2000);

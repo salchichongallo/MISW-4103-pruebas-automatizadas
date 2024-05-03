@@ -4,7 +4,7 @@ Feature: Create a post
 Scenario: As a user, I log in, enter the Posts section, create a new Post, without publishing it and it must appear in the drafts list to be published later
     Given I visit the admin panel
         And I wait for 3 seconds 
-        And I login in as admin with "l.bogotab@uniandes.edu.co" and "l.bogotab123"
+        And I login in as admin with "<email>" and "<password>"
         And I wait for 1 seconds
         And I click on the post button
         And I wait for 2 seconds
