@@ -15,5 +15,7 @@ Before(async function () {
 });
 
 After(async function () {
+  // Wait until scenario reports are generated
+  await new Promise(resolve => setTimeout(resolve, 5000));
   await this.deviceClient.stopKrakenForUserId(this.userId);
 });
