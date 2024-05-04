@@ -5,6 +5,7 @@ Given('I navigate to the posts page', async function () {
   const url = new URL(await this.driver.getUrl());
   url.hash = '#/posts';
   await this.driver.url(url.toString());
+  await new Promise(resolve => setTimeout(resolve, 5_000));
 });
 
 Given('I create a post', async function () {
@@ -58,10 +59,14 @@ Given('I confirm the publication', async function () {
     '[data-test-button="confirm-publish"]',
   );
   await confirmButton.click();
+});
 
-  // save the post
+Given('The publication {kraken-string} is saved', async function (postId) {
   const postAnchor = await this.driver.$('[data-test-complete-bookmark]');
-  this.postUrl = await postAnchor.getAttribute('href');
+  if (!this.postUrl) {
+    this.postUrl = {};
+  }
+  this.postUrl[postId] = await postAnchor.getAttribute('href');
 });
 
 Given('I go back to the dashboard', async function () {
@@ -70,7 +75,8 @@ Given('I go back to the dashboard', async function () {
 });
 
 Then('I visit the post {kraken-string} page', async function (postTitle) {
-  await this.driver.url(this.postUrl);
+  await this.driver.url(this.postUrl[postTitle]);
+  await new Promise(resolve => setTimeout(resolve, 5_000));
   const title = await this.driver.$('h1.gh-article-title');
   expect(title).to.exist;
   expect(await title.getText()).to.equal(postTitle);
