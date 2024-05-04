@@ -19,3 +19,5 @@ Given(
 );
 
 Given('I wait for the dashboard', DashboardPage.prototype.waitFor);
+
+Given('I go back to dashboard', DashboardPage.prototype.visit);

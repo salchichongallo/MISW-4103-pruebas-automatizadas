@@ -3,7 +3,7 @@ const GhostPage = require('./ghost-page');
 class LoginPage extends GhostPage {
   async visit() {
     await this.driver.url('/ghost');
-    await this.driver.waitUntil(() => this.driver.$('#login').then(Boolean));
+    await this.driver.$('#login').waitForDisplayed({ timeout: 30_000 });
   }
 
   async setEmail(email) {

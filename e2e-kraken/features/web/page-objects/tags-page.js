@@ -7,13 +7,13 @@ class TagsPage extends GhostPage {
     url.hash = '#/tags';
     await this.driver.url(url.toString());
     await this.driver.refresh();
-    await new Promise(resolve => setTimeout(resolve, 5000));
-    await this.driver.waitUntil(() => this.driver.$('h2=Tags'));
+    await this.driver.$('h2=Tags').waitForDisplayed({ timeout: 30_000 });
   }
 
   async newTag() {
     const link = await this.driver.$('.view-actions a');
     await link.click();
+    await new Promise(resolve => setTimeout(resolve, 1000));
     return new TagForm(this);
   }
 
