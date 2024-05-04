@@ -1,5 +1,5 @@
-import { PostsPage } from './PostPage';
-import { LoginPage } from './LoginPage';
+import { PostsPage } from './pages/PostPage';
+import { LoginPage } from './pages/LoginPage';
 
 describe('Create a post', () => {
     const loginPage = new LoginPage();
