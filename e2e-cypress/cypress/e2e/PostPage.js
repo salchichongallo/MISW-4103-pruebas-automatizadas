@@ -1,57 +1,74 @@
 export class PostsPage {
+    elements = {
+        postsNav: () => cy.get('[data-test-nav="posts"]'),
+        newPostButton: () => cy.get('[data-test-new-post-button]'),
+        descriptionPost: () => cy.get('p[data-koenig-dnd-droppable="true"]'),
+        titleInput: () => cy.get('[data-test-editor-title-input]'),
+        publishButton: () => cy.contains('Publish'),
+        continueButton: () => cy.get('[data-test-button="continue"]'),
+        confirmPublishButton: () => cy.get('[data-test-button="confirm-publish"]'),
+        postTitle: () => cy.get('.gh-content-entry-title'),
+        psmTrigger: () => cy.get('[data-test-psm-trigger]'),
+        postVisibilitySelect: () => cy.get('select[data-test-select="post-visibility"]'),
+        backToEditor: () => cy.get('.gh-back-to-editor'),
+        publishedPosts: () => cy.get('[data-test-nav-custom="posts-Published"]'),
+        backToPosts: () => cy.get('a[data-test-link="posts"]'),
+        drafts: () => cy.get('a[data-test-nav-custom="posts-Drafts"]'),
+        body: () => cy.get('body')
+    }
+
     visit() {
-        cy.get('[data-test-nav="posts"]').click();
+        this.elements.postsNav().click();
     }
 
     newPost() {
-        cy.get('[data-test-new-post-button]').click();
+        this.elements.newPostButton().click();
     }
 
     clickDescriptionPost() {
-        cy.get('p[data-koenig-dnd-droppable="true"]').click();
+        this.elements.descriptionPost().click();
     }
 
     fillTitle(title) {
-        cy.get('[data-test-editor-title-input]').type(title);
+        this.elements.titleInput().type(title);
     }
 
     publish() {
-        cy.contains('Publish').click();
-        cy.get('[data-test-button="continue"]').click();
-        cy.get('[data-test-button="confirm-publish"]').click();
+        this.elements.publishButton().click();
+        this.elements.continueButton().click();
+        this.elements.confirmPublishButton().click();
     }
 
     verifyPost(title) {
-        cy.get('.gh-content-entry-title').should('contain', title);
+        this.elements.postTitle().should('contain', title);
     }
 
     setVisibility(visibility) {
-        cy.get('[data-test-psm-trigger]').click();
-        cy.wait(1000);
-        cy.get('select[data-test-select="post-visibility"]').select(visibility);
-        cy.get('[data-test-psm-trigger]').click();
+        this.elements.psmTrigger().click();
+        this.elements.postVisibilitySelect().select(visibility);
+        this.elements.psmTrigger().click();
     }
 
     backToEditor() {
-        cy.get('.gh-back-to-editor').click();
+        this.elements.backToEditor().click();
     }
 
     visitPublished() {
-        cy.get('[data-test-nav-custom="posts-Published"]').click();
+        this.elements.publishedPosts().click();
     }
 
     backToPosts() {
-        cy.get('a[data-test-link="posts"]').click();
+        this.elements.backToPosts().click();
     }
 
     goToDrafts() {
-        cy.get('a[data-test-nav-custom="posts-Drafts"]').click();
+        this.elements.drafts().click();
     }
 
     verifyPostNotInPublished(title) {
-        cy.get('body').then((body) => {
+        this.elements.body().then((body) => {
             if (body.find('.gh-content-entry-title').length > 0) {
-                cy.get('.gh-content-entry-title').should('not.contain', title);
+                this.elements.postTitle().should('not.contain', title);
             }
         });
     }
