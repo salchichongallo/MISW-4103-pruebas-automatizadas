@@ -2,6 +2,9 @@ const { expect } = require('chai');
 const { When, Then } = require('@cucumber/cucumber');
 const MembersPage = require('../page-objects/members-page');
 const MemberForm = require('../page-objects/member-form');
+const MembersPublicPage = require('../page-objects/members-public-page');
+const MemberAccountModal = require('../page-objects/member-account-modal');
+const MemberImpersonateModal = require('../page-objects/member-impersonate-modal');
 
 When('I navigate to members page', MembersPage.prototype.visit);
 
@@ -36,5 +39,43 @@ Then(
     const members = await page.getMembers();
     const emails = members.map(member => member.email);
     expect(emails).to.includes(memberEmail);
+  },
+);
+
+When('I open member actions', MemberForm.prototype.clickActions);
+
+When('I impersonate the new member', async function () {
+  const form = new MemberForm(this);
+  const modal = await form.clickImpersonate();
+  await modal.waitFor();
+});
+
+When('I authenticate as the member', async function () {
+  const memberPage = new MembersPublicPage(this);
+  const modal = new MemberImpersonateModal(this);
+  const authLink = await modal.copyLink();
+  await memberPage.visit(authLink);
+});
+
+When(
+  'I open the member account modal',
+  MembersPublicPage.prototype.openAccountModal,
+);
+
+Then(
+  'I should see the member name {kraken-string} in the account modal',
+  async function (memberName) {
+    const modal = new MemberAccountModal(this);
+    const name = await modal.getName();
+    expect(await name.getText()).to.be.equal(memberName);
+  },
+);
+
+Then(
+  'I should see the member email {kraken-string} in the account modal',
+  async function (memberEmail) {
+    const modal = new MemberAccountModal(this);
+    const email = await modal.getEmail();
+    expect(await email.getText()).to.be.equal(memberEmail);
   },
 );
