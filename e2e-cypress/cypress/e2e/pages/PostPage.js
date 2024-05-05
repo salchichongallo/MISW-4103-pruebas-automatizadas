@@ -19,6 +19,11 @@ export class PostsPage {
 
     visit() {
         this.elements.postsNav().click();
+        this.waitFor();
+    }
+
+    waitFor() {
+      cy.get('[data-test-screen-title]', { timeout: 30_000 }).should('be.visible');
     }
 
     newPost() {

@@ -1,6 +1,6 @@
 export class LoginPage {
     elements = {
-        url: () => cy.visit('/'),
+        url: () => cy.visit('/ghost'),
         emailInput: () => cy.get('#identification'),
         passwordInput: () => cy.get('#password'),
         submitButton: () => cy.get('[data-test-button="sign-in"]')
@@ -20,6 +20,5 @@ export class LoginPage {
 
     submit() {
         this.elements.submitButton().click();
-        cy.wait(2000);
     }
 }

@@ -1,6 +1,6 @@
 describe('template spec', () => {
   it('passes', () => {
-    cy.visit('/');
+    cy.visit('/ghost');
     cy.get('h1').should('exist');
     cy.get('#blog-title').type('TSWDL');
     cy.get('#name').type('Admin');
