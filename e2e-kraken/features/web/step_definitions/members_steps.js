@@ -90,3 +90,9 @@ When(
     await modal.close();
   },
 );
+
+Then('I should see a member already exists error message', async function () {
+  const form = new MemberForm(this);
+  const message = await form.getErrorMessage();
+  expect(await message.getText()).to.includes('Member already exists.');
+});

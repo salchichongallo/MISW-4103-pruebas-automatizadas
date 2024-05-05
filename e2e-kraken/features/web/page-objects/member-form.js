@@ -27,6 +27,12 @@ class MemberForm extends GhostPage {
     await button.click();
     return new MemberImpersonateModal(this);
   }
+
+  async getErrorMessage() {
+    const message = this.driver.$('#member-email + p');
+    await message.waitForDisplayed({ timeout: 30_000 });
+    return message;
+  }
 }
 
 module.exports = MemberForm;
