@@ -7,7 +7,7 @@ export class PostsPage {
         publishButton: () => cy.contains('Publish'),
         continueButton: () => cy.get('[data-test-button="continue"]'),
         confirmPublishButton: () => cy.get('[data-test-button="confirm-publish"]'),
-        postTitle: () => cy.get('.gh-content-entry-title'),
+        postTitle: () => cy.get('h3.gh-content-entry-title', { timeout: 10_000 }),
         psmTrigger: () => cy.get('[data-test-psm-trigger]'),
         postVisibilitySelect: () => cy.get('select[data-test-select="post-visibility"]'),
         backToEditor: () => cy.get('.gh-back-to-editor'),
@@ -19,11 +19,6 @@ export class PostsPage {
 
     visit() {
         this.elements.postsNav().click();
-        this.waitFor();
-    }
-
-    waitFor() {
-      cy.get('[data-test-screen-title]', { timeout: 30_000 }).should('be.visible');
     }
 
     newPost() {
@@ -45,7 +40,7 @@ export class PostsPage {
     }
 
     verifyPost(title) {
-        this.elements.postTitle().should('contain', title);
+        this.elements.postTitle().should('be.visible').contains(title)
     }
 
     setVisibility(visibility) {
