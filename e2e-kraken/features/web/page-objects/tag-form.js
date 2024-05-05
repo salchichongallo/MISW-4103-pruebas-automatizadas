@@ -25,6 +25,11 @@ class TagForm extends GhostPage {
     const input = await this.driver.$('#tag-slug');
     return input.getValue();
   }
+
+  async cancelDelete() {
+    const button = await this.driver.$('[data-test-button="cancel"]');
+    await button.click();
+  }
 }
 
 module.exports = TagForm;

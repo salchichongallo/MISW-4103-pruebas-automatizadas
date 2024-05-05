@@ -29,10 +29,26 @@ When('I delete the tag', async function () {
   await form.confirmDeletion();
 });
 
+When('I click on delete tag button', async function () {
+  const form = new TagForm(this);
+  await form.clickDelete();
+});
+
+When('I cancel de deletion of the tag', async function () {
+  const form = new TagForm(this);
+  await form.cancelDelete();
+});
+
 Then('I should not see the tag {kraken-string}', async function (tagName) {
   const tagsPage = new TagsPage(this);
   const tags = await tagsPage.tagsLists();
   expect(tags).not.to.include(tagName);
+});
+
+Then('I should see the tag {kraken-string}', async function (tagName) {
+  const tagsPage = new TagsPage(this);
+  const tags = await tagsPage.tagsLists();
+  expect(tags).to.include(tagName);
 });
 
 Then(
