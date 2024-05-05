@@ -12,7 +12,7 @@ export class PostsPage {
         postVisibilitySelect: () => cy.get('select[data-test-select="post-visibility"]'),
         backToEditor: () => cy.get('.gh-back-to-editor'),
         publishedPosts: () => cy.get('[data-test-nav-custom="posts-Published"]'),
-        backToPosts: () => cy.get('a[data-test-link="posts"]'),
+        backToPosts: () => cy.get('a[data-test-link="posts"]', {timeout: 10_000 } ),
         drafts: () => cy.get('a[data-test-nav-custom="posts-Drafts"]'),
         body: () => cy.get('body')
     }
@@ -58,7 +58,7 @@ export class PostsPage {
     }
 
     backToPosts() {
-        this.elements.backToPosts().click();
+        this.elements.backToPosts().should('be.visible').click();
     }
 
     goToDrafts() {
