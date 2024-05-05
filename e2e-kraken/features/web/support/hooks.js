@@ -1,4 +1,4 @@
-const { After, Before } = require('@cucumber/cucumber');
+const { After, Before, BeforeStep } = require('@cucumber/cucumber');
 const { WebClient } = require('kraken-node');
 
 Before(async function () {
@@ -12,6 +12,10 @@ Before(async function () {
     this.userId,
   );
   this.driver = await this.deviceClient.startKrakenForUserId(this.userId);
+});
+
+BeforeStep(async function () {
+  await new Promise(resolve => setTimeout(resolve, 1_000));
 });
 
 After(async function () {

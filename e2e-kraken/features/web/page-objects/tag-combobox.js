@@ -14,6 +14,13 @@ class TagCombobox extends GhostPage {
     const tagOption = options[0];
     await tagOption.click();
   }
+
+  async getSelectedTags() {
+    const elements = await this.driver.$$(
+      '#tag-input .ember-power-select-multiple-inner-text',
+    );
+    return Promise.all(elements.map(element => element.getText()));
+  }
 }
 
 module.exports = TagCombobox;

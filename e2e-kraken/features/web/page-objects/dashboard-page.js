@@ -3,6 +3,7 @@ const GhostPage = require('./ghost-page');
 class DashboardPage extends GhostPage {
   async visit() {
     const url = new URL(await this.driver.getUrl());
+    url.pathname = '/ghost';
     url.hash = '#/dashboard';
     await this.driver.url(url.toString());
     await this.driver.refresh();
