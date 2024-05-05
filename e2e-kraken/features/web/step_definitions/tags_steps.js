@@ -46,6 +46,12 @@ When('I create the tag name {kraken-string}', async function (tagName) {
   await form.setName(tagName);
 });
 
+When('I attempt to create a tag with a name of 200 characters', async function () {
+  const longName = 'a'.repeat(200);
+  const form = new TagForm(this);
+  await form.setName(longName);
+});
+
 When('I create slug Tag {kraken-string}', async function (slugName) {
   const form = new TagForm(this);
   await form.setSlug(slugName)
@@ -100,5 +106,4 @@ Then(
     );
   },
 );
-
 
