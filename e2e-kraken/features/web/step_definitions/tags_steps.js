@@ -7,6 +7,8 @@ const TagPublicPage = require('../page-objects/tag-public-page');
 
 Given('I navigate to tags page', TagsPage.prototype.visit);
 
+Given ('I select create New Tag', TagsPage.prototype.newTag);
+
 When('I create the tag {kraken-string}', async function (tagName) {
   const page = new TagsPage(this);
   const form = await page.newTag();
@@ -39,6 +41,26 @@ When('I cancel de deletion of the tag', async function () {
   await form.cancelDelete();
 });
 
+When('I create the tag name {kraken-string}', async function (tagName) {
+  const form = new TagForm(this);
+  await form.setName(tagName);
+});
+
+When('I create slug Tag {kraken-string}', async function (slugName) {
+  const form = new TagForm(this);
+  await form.setSlug(slugName)
+});
+
+When('I create the tag description {kraken-string}', async function (description) {
+  const form = new TagForm(this);
+  await form.setDescription(description);
+});
+
+When('I click on the save Tag', async function () {
+  const form = new TagForm(this);
+  await form.clickSave();
+});
+
 Then('I should not see the tag {kraken-string}', async function (tagName) {
   const tagsPage = new TagsPage(this);
   const tags = await tagsPage.tagsLists();
@@ -64,3 +86,19 @@ Then(
     expect(await title.getText()).equals('404');
   },
 );
+
+Then(
+  'I should see an error message saying {string}',
+  async function (expectedErrorMessage) {
+    const tagsPage = new TagsPage(this);
+    const errorMessageElement = await tagsPage.driver.$('.error .response');
+    const actualErrorMessage = await errorMessageElement.getText();
+
+    expect(actualErrorMessage.trim()).to.equal(
+      expectedErrorMessage,
+      `Expected error message to be "${expectedErrorMessage}", but was "${actualErrorMessage}"`,
+    );
+  },
+);
+
+

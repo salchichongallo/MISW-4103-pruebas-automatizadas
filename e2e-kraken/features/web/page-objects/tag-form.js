@@ -6,6 +6,16 @@ class TagForm extends GhostPage {
     await input.setValue(name);
   }
 
+  async setSlug(slug) {
+    const input = await this.driver.$('#tag-slug');
+    await input.setValue(slug);
+  }
+
+  async setDescription(description) {
+    const input = await this.driver.$('#tag-description');
+    await input.setValue(description);
+  }
+
   async clickSave() {
     const button = await this.driver.$('[data-test-button="save"]');
     await button.click();
