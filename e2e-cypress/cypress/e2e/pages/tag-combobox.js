@@ -8,4 +8,8 @@ export class TagCombobox {
         options.first().click();
       });
   }
+
+  getSelectedTags() {
+    return cy.get('#tag-input .ember-power-select-multiple-inner-text');
+  }
 }
