@@ -6,15 +6,11 @@ class MemberImpersonateModal extends GhostPage {
   }
 
   async copyLink() {
-    const button = await this.driver.$(
-      '[data-test-button="copy-impersonate-link"]',
-    );
+    await this.driver
+      .$('[data-test-button="copy-impersonate-link"]')
+      .waitForDisplayed();
     const input = await this.driver.$('#member-signin-url');
     const authLink = await input.getValue();
-    await button.click();
-    await button
-      .$('[data-test-task-button-state="success"]')
-      .waitForDisplayed();
     return authLink;
   }
 }

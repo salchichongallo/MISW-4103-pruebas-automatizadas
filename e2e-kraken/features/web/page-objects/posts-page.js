@@ -8,6 +8,7 @@ class PostsPage extends GhostPage {
     url.hash = '#/posts';
     await this.driver.url(url.toString());
     await this.driver.refresh();
+    await new Promise(resolve => setTimeout(resolve, 5_000));
     await this.driver.$('h2=Posts').waitForDisplayed({ timeout: 30_000 });
   }
 

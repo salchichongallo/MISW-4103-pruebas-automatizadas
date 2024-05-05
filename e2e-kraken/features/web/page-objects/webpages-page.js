@@ -8,7 +8,10 @@ class WebpagesPage extends GhostPage {
     url.hash = '#/pages';
     await this.driver.url(url.toString());
     await this.driver.refresh();
-    await this.driver.$('h2=Pages').waitForDisplayed({ timeout: 30_000 });
+    await new Promise(resolve => setTimeout(resolve, 5_000));
+    await this.driver
+      .$('.gh-canvas-title')
+      .waitForDisplayed({ timeout: 30_000 });
   }
 
   async newPage() {
@@ -18,7 +21,7 @@ class WebpagesPage extends GhostPage {
   }
 
   async select(postTitle) {
-    const postsElements = await this.driver.$$('h3');
+    const postsElements = await this.driver.$$('.gh-content-entry-title');
     const posts = await Promise.all(postsElements.map(item => item.getText()));
     const postIndex = posts.findIndex(post => post === postTitle);
     const link = postsElements[postIndex];
