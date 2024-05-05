@@ -1,72 +1,66 @@
-const expect = require('chai').expect;
+const { expect } = require('chai');
 const { Given, When, Then } = require('@cucumber/cucumber');
 
-Given('I navigate to the tags page', async function () {
-  const tagsLink = await this.driver.$('[data-test-nav="tags"]');
-  await tagsLink.click();
-});
+const TagsPage = require('../page-objects/tags-page');
+const TagForm = require('../page-objects/tag-form');
+const TagPublicPage = require('../page-objects/tag-public-page');
+
+Given('I navigate to tags page', TagsPage.prototype.visit);
 
 When('I create the tag {kraken-string}', async function (tagName) {
-  const newTagLink = await this.driver.$('.view-actions a');
-  await newTagLink.click();
+  const page = new TagsPage(this);
+  const form = await page.newTag();
+  await form.setName(tagName);
 
-  const nameInput = await this.driver.$('#tag-name');
-  await nameInput.setValue(tagName);
-
-  const saveButton = await this.driver.$('[data-test-button="save"]');
-  await saveButton.click();
-});
-
-When('I click on the {kraken-string} tag', async function (tagName) {
-  const tags = await this.driver.$$('.gh-tag-list-name');
-
-  let tag;
-  for (const item of tags) {
-    const isSearchedTag = (await item.getText()) === tagName;
-    if (isSearchedTag) {
-      tag = item;
-      break;
-    }
+  // Save the slug for usage in other steps
+  if (!this.tagSlugsByName) {
+    this.tagSlugsByName = {};
   }
+  this.tagSlugsByName[tagName] = await form.getSlug();
 
-  await tag.click();
+  await form.clickSave();
 });
 
-When('I click on the delete tag button', async function () {
-  const deleteButton = await this.driver.$('[data-test-button="delete-tag"]');
-  await deleteButton.click();
+When('I select the {kraken-string} tag', TagsPage.prototype.click);
+
+When('I delete the tag', async function () {
+  const form = new TagForm(this);
+  await form.clickDelete();
+  await form.confirmDeletion();
 });
 
-When('I confirm the deletion of the tag', async function () {
-  const confirmButton = await this.driver.$('[data-test-button="confirm"]');
-  await confirmButton.click();
+When('I click on delete tag button', async function () {
+  const form = new TagForm(this);
+  await form.clickDelete();
+});
+
+When('I cancel de deletion of the tag', async function () {
+  const form = new TagForm(this);
+  await form.cancelDelete();
 });
 
 Then('I should not see the tag {kraken-string}', async function (tagName) {
-  const tags = await this.driver.$$('.gh-tag-list-name');
+  const tagsPage = new TagsPage(this);
+  const tags = await tagsPage.tagsLists();
+  expect(tags).not.to.include(tagName);
+});
 
-  let tag;
-  for (const item of tags) {
-    const isSearchedTag = (await item.getText()) === tagName;
-    if (isSearchedTag) {
-      tag = item;
-      break;
-    }
-  }
-
-  expect(tag).to.be.undefined;
+Then('I should see the tag {kraken-string}', async function (tagName) {
+  const tagsPage = new TagsPage(this);
+  const tags = await tagsPage.tagsLists();
+  expect(tags).to.include(tagName);
 });
 
 Then(
   'the public page tag {kraken-string} should not exist',
   async function (tagName) {
-    const url = new URL(await this.driver.getUrl());
-    url.hash = '';
-    url.pathname = `/tag/${tagName.toLowerCase()}/`;
+    const tagPage = new TagPublicPage(this);
 
-    await this.driver.url(url.toString());
+    const slug = this.tagSlugsByName[tagName];
+    await tagPage.visit(slug);
+    const title = await tagPage.getTitle();
 
-    const title = await this.driver.$('h1.error-code');
     expect(title).to.exist;
+    expect(await title.getText()).equals('404');
   },
 );
