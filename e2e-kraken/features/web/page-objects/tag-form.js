@@ -16,6 +16,11 @@ class TagForm extends GhostPage {
     await input.setValue(description);
   }
 
+  async setColor(color) {
+    const input = await this.driver.$("input[name='accent-color'][type='text']");
+    await input.setValue(color);
+  }
+
   async clickSave() {
     const button = await this.driver.$('[data-test-button="save"]');
     await button.click();

@@ -67,6 +67,11 @@ When('I click on the save Tag', async function () {
   await form.clickSave();
 });
 
+When('I create the tag color {kraken-string}', async function (color) {
+  const form = new TagForm(this);
+  await form.setColor(color);
+});
+
 Then('I should not see the tag {kraken-string}', async function (tagName) {
   const tagsPage = new TagsPage(this);
   const tags = await tagsPage.tagsLists();
@@ -98,6 +103,20 @@ Then(
   async function (expectedErrorMessage) {
     const tagsPage = new TagsPage(this);
     const errorMessageElement = await tagsPage.driver.$('.error .response');
+    const actualErrorMessage = await errorMessageElement.getText();
+
+    expect(actualErrorMessage.trim()).to.equal(
+      expectedErrorMessage,
+      `Expected error message to be "${expectedErrorMessage}", but was "${actualErrorMessage}"`,
+    );
+  },
+);
+
+Then(
+  'I should see a color error message saying {string}',
+  async function (expectedErrorMessage) {
+    const tagsPage = new TagsPage(this);
+    const errorMessageElement = await tagsPage.driver.$('.error .response[data-test-error="accentColor"]');
     const actualErrorMessage = await errorMessageElement.getText();
 
     expect(actualErrorMessage.trim()).to.equal(
