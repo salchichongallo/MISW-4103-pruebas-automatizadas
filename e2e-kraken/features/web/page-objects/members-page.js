@@ -22,14 +22,26 @@ class MembersPage extends GhostPage {
     const membersElements = await this.driver.$$('.gh-members-list-row');
     const members = [];
     for (const element of membersElements) {
-      const nameElement = await element.$('.gh-members-list-name');
-      const emailElement = await element.$('.gh-members-list-email');
       members.push({
-        name: await nameElement.getText(),
-        email: await emailElement.getText(),
+        name: await this._getMemberName(element),
+        email: await this._getMemberEmail(element),
       });
     }
     return members;
+  }
+
+  async _getMemberName(memberElement) {
+    const nameElement = await memberElement.$('.gh-members-list-name');
+    return (await nameElement.isExisting())
+      ? await nameElement.getText()
+      : null;
+  }
+
+  async _getMemberEmail(memberElement) {
+    const emailElement = await memberElement.$('.gh-members-list-email');
+    return (await emailElement.isExisting())
+      ? await emailElement.getText()
+      : null;
   }
 }
 

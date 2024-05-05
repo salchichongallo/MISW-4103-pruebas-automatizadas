@@ -79,3 +79,14 @@ Then(
     expect(await email.getText()).to.be.equal(memberEmail);
   },
 );
+
+When(
+  'I set the name in the member modal to {kraken-string}',
+  async function (memberName) {
+    const modal = new MemberAccountModal(this);
+    await modal.editProfile();
+    await modal.setName(memberName);
+    await modal.saveProfile();
+    await modal.close();
+  },
+);
