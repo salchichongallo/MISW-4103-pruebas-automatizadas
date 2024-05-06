@@ -11,8 +11,8 @@ const filename = path.join(
 
 const content = fs.readFileSync(filename, 'utf-8');
 
-let newContent;
-const lines = content.split('\n');
+let newContent = '';
+const [...lines] = content.split('\n');
 for (const line of lines) {
   if (!line.trim().startsWith('capabilities:')) {
     newContent += line + '\n';
