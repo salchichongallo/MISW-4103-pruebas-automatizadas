@@ -1,21 +1,60 @@
-## Desarrollo local
+# Instrucciones de instalación y ejecución
 
-Dependencias:
+## Estructura de archivos
 
-- Node.js >= v18
-- Docker >= v25
+```txt
+├── README.md
+├── .env.example  -------------------> Variables de entorno
+├── e2e-cypress  --------------------> Aplicación de Cypress
+│   ├── cypress
+│   │   └── e2e  --------------------> Escenarios de pruebas de Cypress
+│   │       └── pages  --------------> Page Objects
+│   ├── cypress.env.json  -----------> Variables de entorno
+│   └── cypress.example.json  -------> Ejemplo de variables de entorno
+├── e2e-kraken  ---------------------> Aplicación de Kraken
+│   └── features  -------------------> Escenarios de pruebas de Kraken
+│       └── web
+│           ├── page-objects  -------> Page Objects
+│           └── step_definitions  ---> Definición de pasos
+└── package.json  -------------------> Definición de librerías
+```
 
-Instalación:
+## Requisitos previos
 
-1. Clonar repositorio
-2. Instalar dependencias: `npm install`
-3. Iniciar Ghost: `docker-compose up ghost -d`
+Antes de ejecutar las pruebas, asegúrese de tener instalado lo siguiente:
 
-Los credenciales de panel de administración están en los archivos `e2e-cypress/cypress.env.json` y `e2e-kraken/properties.json`
+- [Node.js 18 o superior.](https://nodejs.org/en/download)
+- Google Chrome en una de sus últimas versiones.
 
-Para correr Cypress: `npm run cy:open`
+## Instalación
 
-Para correr Kraken: `npm run kraken:test`
+1. Descargue el proyecto
+
+Puede clonar este repositorio o descargar el archivo ZIP adjunto en los releases
+
+2. Configura las variables de entorno
+
+Renombre el archivo `.env.example` por `.env` y coloque con la siguiente información en él:
+
+```
+GHOST_EMAIL=john@doe.com
+GHOST_PASSWORD=Secret321.
+GHOST_BASE_URL=http://ec2-54-91-89-99.compute-1.amazonaws.com:2368
+```
+
+3.  Navegue hasta el directorio del proyecto y ejecute el siguiente comando para instalar las dependencias:
+
+```bash
+npm install
+```
+
+## Ejecución de pruebas E2E
+
+Para Kraken, ejecute: `npm run kraken:test`
+
+Y para Cypress, ejecute: `npm test:cypress`
+
+---
 
 ### Recursos de interés
 
