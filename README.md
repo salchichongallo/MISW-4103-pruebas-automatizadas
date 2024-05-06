@@ -50,6 +50,8 @@ npm install
 
 ## Ejecución de pruebas E2E
 
+Nota: Ejecute los siguientes comandos como administrador.
+
 Para Kraken, ejecute: `npm run kraken:test`
 
 Y para Cypress, ejecute: `npm run test:cypress`
