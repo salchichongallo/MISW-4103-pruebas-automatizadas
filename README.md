@@ -23,18 +23,18 @@
 
 Antes de ejecutar las pruebas, asegúrese de tener instalado lo siguiente:
 
-- [Node.js 18 o superior.](https://nodejs.org/en/download)
-- Google Chrome en una de sus últimas versiones.
+- [Node.js 18 o superior](https://nodejs.org/en/download)
+- Google Chrome
 
 ## Instalación
 
 1. Descargue el proyecto
 
-Puede clonar este repositorio o descargar el archivo ZIP adjunto en los releases
+Clone este repositorio o descargue el archivo ZIP adjunto en un release.
 
-2. Configura las variables de entorno
+2. Configure las variables de entorno
 
-Renombre el archivo `.env.example` por `.env` y coloque con la siguiente información en él:
+Renombre el archivo `.env.example` por `.env` y coloque la siguiente información en él:
 
 ```
 GHOST_EMAIL=john@doe.com
@@ -53,6 +53,8 @@ npm install
 Para Kraken, ejecute: `npm run kraken:test`
 
 Y para Cypress, ejecute: `npm test:cypress`
+
+Nota: Si modifica las variables de entorno, asegúrese de ejecutar el siguiente comando para actualizar los valores en ambas aplicaciones: `npm run postinstall`
 
 ---
 
