@@ -1,6 +1,17 @@
-# Instrucciones de instalación y ejecución
+# Pruebas automatizadas
 
-## Estructura de archivos
+## Integrantes del equipo - MISW-4103
+
+|Nombre | Correo institucional |
+|-------|--------------------- |
+|Jaime Gallo| j.gallom@uniandes.edu.co |
+|Jhorman Galindo| j.galindop@uniandes.edu.co|
+|Leiner Barrios| lj.barrios@uniandes.edu.co|
+|Luis Alejandro Bogotá| l.bogotab@uniandes.edu.co|
+
+## Instrucciones de instalación y ejecución
+
+### Estructura de archivos
 
 ```txt
 ├── README.md
@@ -19,14 +30,14 @@
 └── package.json  -------------------> Definición de librerías
 ```
 
-## Requisitos previos
+### Requisitos previos
 
 Antes de ejecutar las pruebas, asegúrese de tener instalado lo siguiente:
 
 - [Node.js 18 o superior](https://nodejs.org/en/download)
 - Google Chrome
 
-## Instalación
+### Instalación
 
 1. Descargue el proyecto
 
@@ -48,7 +59,7 @@ GHOST_BASE_URL=http://ec2-54-91-89-99.compute-1.amazonaws.com:2368
 npm install
 ```
 
-## Ejecución de pruebas E2E
+### Ejecución de pruebas E2E
 
 Nota: Ejecute los siguientes comandos como administrador.
 
@@ -60,7 +71,7 @@ Nota: Si modifica las variables de entorno, asegúrese de ejecutar el siguiente 
 
 ---
 
-### Recursos de interés
+#### Recursos de interés
 
 - [Referencia de API para Webdriver (browser para Kraken):](https://v7.webdriver.io/docs/api/browser/$)
 - [Ejemplos de Kraken](https://github.com/TheSoftwareDesignLab/Kraken/tree/gh-pages/examples)
