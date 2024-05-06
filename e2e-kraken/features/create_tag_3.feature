@@ -1,7 +1,7 @@
 Feature: Creación de tag
 
 @user1 @web
-Scenario: CREATAG3 - Creación de tag con nombre mayor a 191 caracteres
+Scenario: T3 - Creación de tag con nombre mayor a 191 caracteres
     Given The login page
         And I sign-in with "<email>" and "<password>"
         And I wait for the dashboard

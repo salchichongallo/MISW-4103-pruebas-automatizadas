@@ -1,7 +1,7 @@
 Feature: Creación de tag
 
 @user1 @web
-Scenario: CREATAG4 - Creación de tag con color no hexadecimal
+Scenario: T4 - Creación de tag con color no hexadecimal
     Given The login page
         And I sign-in with "<email>" and "<password>"
         And I wait for the dashboard

@@ -15,7 +15,7 @@ describe('Create a post', () => {
         dashboardPage.waitFor();
     });
 
-    it('As a user, I log in, enter the Posts section, create a new Post, without publishing it and it must appear in the drafts list to be published later', () => {
+    it('T11 - As a user, I log in, enter the Posts section, create a new Post, without publishing it and it must appear in the drafts list to be published later', () => {
         postsPage.visit();
         postsPage.newPost();
         postsPage.fillTitle('Unpublished in draft list');

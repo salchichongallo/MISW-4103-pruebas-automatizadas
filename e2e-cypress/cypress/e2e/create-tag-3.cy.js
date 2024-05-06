@@ -4,7 +4,7 @@ import { LoginPage } from './pages/LoginPage';
 import { TagsPage } from './pages/tags-page';
 import { DashboardPage } from './pages/dashboard-page';
 
-describe('CREATAG3 - Creación de tag con nombre mayor a 191 caracteres', () => {
+describe('T3 - Creación de tag con nombre mayor a 191 caracteres', () => {
   it(`
     Given The login page
         And I sign-in with "<email>" and "<password>"

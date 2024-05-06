@@ -1,7 +1,7 @@
 Feature: Creación de tag
 
 @user1 @web
-Scenario: CREATAG2 - Creación de tag con caracteres especiales
+Scenario: T2 - Creación de tag con caracteres especiales
     Given The login page
         And I sign-in with "<email>" and "<password>"
         And I wait for the dashboard

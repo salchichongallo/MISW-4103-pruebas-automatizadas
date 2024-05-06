@@ -1,7 +1,7 @@
 Feature: Creación de tag
 
 @user1 @web
-Scenario: CREATAG1 - Creación de tag con nombre vacío
+Scenario: T1 - Creación de tag con nombre vacío
     Given The login page
         And I sign-in with "<email>" and "<password>"
         And I wait for the dashboard

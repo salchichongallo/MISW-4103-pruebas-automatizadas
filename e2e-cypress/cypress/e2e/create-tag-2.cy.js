@@ -4,7 +4,7 @@ import { LoginPage } from './pages/LoginPage';
 import { TagsPage } from './pages/tags-page';
 import { DashboardPage } from './pages/dashboard-page';
 
-describe('CREATAG2 - Creación de tag con caracteres especiales', () => {
+describe('T2 - Creación de tag con caracteres especiales', () => {
   it(`
     Given The login page
         And I sign-in with "<email>" and "<password>"

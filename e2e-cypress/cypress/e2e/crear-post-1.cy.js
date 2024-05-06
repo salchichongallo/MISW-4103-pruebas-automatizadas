@@ -15,7 +15,7 @@ describe('Create a post', () => {
     dashboardPage.waitFor();
   });
 
-  it('As a user I log in, enter the Posts section, create a new Post and verify its creation in the Posts list', () => {
+  it('T-9 As a user I log in, enter the Posts section, create a new Post and verify its creation in the Posts list', () => {
     postsPage.visit();
     postsPage.newPost();
     postsPage.fillTitle('test post');
