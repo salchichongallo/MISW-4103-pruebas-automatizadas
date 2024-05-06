@@ -2,7 +2,7 @@ const { Given, When, Then } = require('@cucumber/cucumber');
 
 // Login
 When('I visit the admin panel', async function () {
-  return await this.driver.url('http://localhost:2368/ghost');
+  return await this.driver.url('/ghost');
 });
 
 When(
