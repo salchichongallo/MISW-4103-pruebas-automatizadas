@@ -6,7 +6,7 @@ const credentials = {
   password: process.env.GHOST_PASSWORD,
 };
 
-const filename = path.join(__dirname, '../e2e-cypress/cypress.env.json');
+const filename = path.join(__dirname, '../e2e-kraken/properties.json');
 
 const content = JSON.stringify(credentials, null, 2);
 
