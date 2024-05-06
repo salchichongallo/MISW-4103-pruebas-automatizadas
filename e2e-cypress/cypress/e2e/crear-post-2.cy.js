@@ -15,7 +15,7 @@ describe('Create a post', () => {
         dashboardPage.waitFor()
     });
 
-    it('As a user I log in, enter the Posts section, create a new Members Only Post and validate your Members Only Post', () => {
+    it('T-10 - As a user I log in, enter the Posts section, create a new Members Only Post and validate your Members Only Post', () => {
         postsPage.visit();
         postsPage.newPost();
         postsPage.fillTitle('Members only');
