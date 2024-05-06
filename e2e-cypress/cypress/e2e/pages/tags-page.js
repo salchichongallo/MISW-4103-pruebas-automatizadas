@@ -26,6 +26,18 @@ export class TagForm {
   setName(name) {
     cy.get('#tag-name').type(name);
   }
+  
+  setSlug(slug) {
+    cy.get('#tag-slug').type(slug);
+  }
+
+  setDescription(description) {
+    cy.get('#tag-description').type(description);
+  }
+
+  setColor(color) {
+    cy.get("input[name='accent-color'][type='text']").type(color, {force: true});
+  }
 
   clickSave() {
     cy.get('[data-test-button="save"]').click();
