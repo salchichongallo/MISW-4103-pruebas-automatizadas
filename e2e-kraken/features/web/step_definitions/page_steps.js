@@ -1,35 +1,56 @@
 const { expect } = require('chai');
 const { Given, When, Then } = require('@cucumber/cucumber');
+const PagesPage = require('../page-objects/pages-page');
+const PageForm = require('../page-objects/page-form');
 
-Given('I navigate to the pages page', async function () {
-  const pagesLink = await this.driver.$('[data-test-nav="pages"]');
-  await pagesLink.click();
+let title;
+
+When('I navigate to page section', PagesPage.prototype.visit);
+
+When('I click on new page', PagesPage.prototype.newPage);
+
+When('I set the page title to {kraken-string}', async function (pageTitle) {
+  title = pageTitle;
+  const page = new PageForm(this);
+  await page.setTitle(pageTitle);
 });
 
-Given('I create a page', async function () {
-  const newPageButton = await this.driver.$('[data-test-new-page-button]');
-  await newPageButton.click();
+When('I set the page content', async function () {
+  const page = new PageForm(this);
+  await page.setContent();
 });
 
-Given('I click on the page {kraken-string}', async function (pageTitle) {
-  const pages = await this.driver.$$('.gh-content-entry-title');
-
-  let page;
-  for (const item of pages) {
-    const isSearchedPage = (await item.getText()) === pageTitle;
-    if (isSearchedPage) {
-      page = item;
-      break;
-    }
-  }
-
-  await page.click();
+When('I set the page image', async function () {
+  const page = new PageForm(this);
+  await page.setImage();
 });
 
-Then('The tag {kraken-string} is not present', async function (tagName) {
-  const tagElements = await this.driver.$$(
-    '#tag-input li [data-test-selected-token]',
-  );
-  const tagList = await Promise.all(tagElements.map(tag => tag.getText()));
-  expect(tagList).not.includes(tagName);
+When('I set the page access to "members paid"', async function () {
+  const page = new PageForm(this);
+  await page.setAccess();
+});
+
+When('I create the page', PageForm.prototype.clickSave);
+
+When('I confirm the publication', PageForm.prototype.clickConfirmPublication);
+
+When('I confirm the publish', PageForm.prototype.confirmPublish);
+
+Then('I navigate to pages section and see the title', async function () {
+  const page = new PagesPage(this);
+  await page.visit();
+  const pages = await page.getPages();
+  expect(pages).to.includes(title);
+});
+
+
+When('I return to the pages list', async function () {
+  const page = new PagesPage(this);
+  await page.goBack();
+});
+
+Then('I should see the page title with draft flag', async function () {
+  const page = new PagesPage(this);
+  const pages = await page.getDraftPages();
+  expect(pages).to.includes(title);
 });
