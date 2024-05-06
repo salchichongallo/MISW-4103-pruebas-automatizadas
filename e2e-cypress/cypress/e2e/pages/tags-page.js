@@ -42,4 +42,8 @@ export class TagForm {
   getSlug() {
     return cy.get('#tag-slug');
   }
+
+  cancelDelete() {
+    cy.get('[data-test-button="cancel"]').click();
+  }
 }
