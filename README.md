@@ -52,7 +52,7 @@ npm install
 
 Para Kraken, ejecute: `npm run kraken:test`
 
-Y para Cypress, ejecute: `npm test:cypress`
+Y para Cypress, ejecute: `npm run test:cypress`
 
 Nota: Si modifica las variables de entorno, asegúrese de ejecutar el siguiente comando para actualizar los valores en ambas aplicaciones: `npm run postinstall`
 
