@@ -5,7 +5,6 @@ module.exports = defineConfig({
   e2e: {
     baseUrl: process.env.GHOST_BASE_URL || 'http://localhost:2368',
     excludeSpecPattern: 'cypress/e2e/1_onboarding.cy.js',
-    specPattern: ['cypress/e2e/delete-tag-1.cy.js', 'cypress/e2e/login.cy.js'], // TODO:
     viewportWidth: 1200,
     viewportHeight: 900,
     setupNodeEvents(on) {
