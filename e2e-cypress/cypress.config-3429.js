@@ -7,5 +7,6 @@ module.exports = defineConfig({
     specPattern: 'cypress/e2e/test_3.42.9/*.cy.js',
     viewportWidth: 1200,
     viewportHeight: 900,
+    screenshotsFolder: 'cypress/screenshots/ghost3429',
   },
 });

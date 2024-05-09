@@ -10,5 +10,6 @@ module.exports = defineConfig({
     ],
     viewportWidth: 1200,
     viewportHeight: 900,
+    screenshotsFolder: 'cypress/screenshots/ghost5822',
   },
 });
