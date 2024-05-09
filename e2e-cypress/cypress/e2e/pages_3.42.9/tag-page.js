@@ -6,11 +6,15 @@ export class TagPage {
         slugInput: () => cy.get('input#tag-slug'), 
         tagDescriptionTextarea: () => cy.get('textarea#tag-description'),
         saveButton: () => cy.contains('button', 'Save'),
-        tagTitle: () => cy.get('h3.gh-tag-list-name', { timeout: 10_000 }),
+        tagTitle: () => cy.get('h3.gh-tag-list-name', { timeout: 30_000 }),
+        deleteTagButton: () => cy.get('button.gh-btn.gh-btn-red.gh-btn-icon.mb15').contains('Delete tag'),
+        deleteButton: () => cy.get('button.gh-btn.gh-btn-red.gh-btn-icon.ember-view').contains('Delete'),
+        cancelButton: () => cy.get('button.gh-btn').contains('Cancel'),
     }
 
     visit(){
         cy.visit('/ghost/#/tags');
+        cy.wait(2000);
     }
 
     clickNewTagButtonByText() {
@@ -27,6 +31,7 @@ export class TagPage {
 
     clickSaveButton() {
         this.elements.saveButton().click();
+        cy.wait(2000);
     }
 
     verifyTag(title) {
@@ -35,5 +40,33 @@ export class TagPage {
 
     fillTagSlug(input) {
         this.elements.slugInput().type(input);
+    }
+
+    clickTagTitle(title) {
+        this.elements.tagTitle().contains(title).click();
+    }
+
+    clickDeleteTagButton() {
+        this.elements.deleteTagButton().click();
+    }
+
+    clickDeleteButton() {
+        this.elements.deleteButton().click();
+    }
+
+    clickCancelButton() {
+        this.elements.cancelButton().click();
+    }
+
+    verifyTagDoesNotExist(title) {
+        this.elements.tagTitle().contains(title).should('not.exist');
+    }
+
+    visitSlug(slug) {
+        cy.visit(`/tag/${slug.toLowerCase()}`, { failOnStatusCode: false });
+    }
+
+    getTitleSlugVisit() {
+        return cy.get('h1');
     }
 }

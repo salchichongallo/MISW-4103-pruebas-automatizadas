@@ -9,11 +9,16 @@ export class PostsPage {
         postsLinkByText: () => cy.get('svg.w3.fill-blue.mr1.nudge-right--2', {timeout: 10_000 }), 
         publishedNotification: () => cy.contains('span', 'Published'),
         postTitle: () => cy.get('h3.gh-content-entry-title', { timeout: 10_000 }),
-        status: () => cy.get('span.fw4.midgrey-l2 div')
+        status: () => cy.get('span.fw4.midgrey-l2 div'),
+        publishedLink: () => cy.get('a.ember-view').contains('Published'),
     }
 
     visit() {
         cy.visit('/ghost/#/posts');
+    }
+
+    visitPublished() {
+        cy.visit('/ghost/#/posts/?filter=published');
     }
 
     clickNewPostButtonByText() {
@@ -44,8 +49,16 @@ export class PostsPage {
         this.elements.postsLinkByText().should('be.visible').click({ multiple: true });
     }
 
+    clickPublishedLink() {
+        this.elements.publishedLink().click();
+    }
+
     verifyPost(title) {
         this.elements.postTitle().should('be.visible').contains(title)
+    }
+
+    verifyPostNotContains(title) {
+        cy.get('body').should('not.contain', title);
     }
 
 }
