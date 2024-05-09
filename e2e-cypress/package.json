@@ -3,7 +3,9 @@
   "name": "e2e-cypress",
   "scripts": {
     "cy:open": "cypress open",
-    "test": "cypress run --browser chrome"
+    "test": "cypress run --browser chrome",
+    "cy:open:3429": "cypress open --config-file cypress.config-3429.js",
+    "test:3429": "cypress run --browser chrome --config-file cypress.config-3429.js"
   },
   "devDependencies": {
     "@faker-js/faker": "8.4.1",

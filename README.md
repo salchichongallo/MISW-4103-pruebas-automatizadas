@@ -2,12 +2,12 @@
 
 ## Integrantes del equipo - MISW-4103
 
-|Nombre | Correo institucional |
-|-------|--------------------- |
-|Jaime Gallo| j.gallom@uniandes.edu.co |
-|Jhorman Galindo| j.galindop@uniandes.edu.co|
-|Leiner Barrios| lj.barrios@uniandes.edu.co|
-|Luis Alejandro Bogotá| l.bogotab@uniandes.edu.co|
+| Nombre                | Correo institucional       |
+| --------------------- | -------------------------- |
+| Jaime Gallo           | j.gallom@uniandes.edu.co   |
+| Jhorman Galindo       | j.galindop@uniandes.edu.co |
+| Leiner Barrios        | lj.barrios@uniandes.edu.co |
+| Luis Alejandro Bogotá | l.bogotab@uniandes.edu.co  |
 
 ## Instrucciones de instalación y ejecución
 
@@ -51,6 +51,7 @@ Renombre el archivo `.env.example` por `.env` y coloque la siguiente informació
 GHOST_EMAIL=john@doe.com
 GHOST_PASSWORD=Secret321.
 GHOST_BASE_URL=http://ec2-54-91-89-99.compute-1.amazonaws.com:2368
+GHOST_BASE_URL_3429=http://ec2-54-158-234-189.compute-1.amazonaws.com:2368
 ```
 
 3.  Navegue hasta el directorio del proyecto y ejecute el siguiente comando para instalar las dependencias:
@@ -63,9 +64,20 @@ npm install
 
 Nota: Ejecute los siguientes comandos como administrador.
 
+#### Ghost v5.82.2
+
+Todos los escenarios están escritos para esta versión de Ghost. En la siguiente sección encontrará las instrucciones para ejecutar los 10 escenarios con Ghost v3.42.9
+
 Para Kraken, ejecute: `npm run kraken:test`
 
 Y para Cypress, ejecute: `npm run test:cypress`
+
+#### Pruebas con Ghost v3.42.9
+
+Pruebas Ghost v3.42.9:
+
+- Para modo headless ejecute: `npm run test:cypress:3429`
+- Para abrir la consla de Cypress: `npm run cy:open:3429`
 
 Nota: Si modifica las variables de entorno, asegúrese de ejecutar el siguiente comando para actualizar los valores en ambas aplicaciones: `npm run postinstall`
 
