@@ -24,32 +24,45 @@ describe('DELTAG1 - Tag is deleted from public page', () => {
     const tagPublicPage = new TagPublicPage();
 
     loginPage.visit();
+    cy.step('The login page');
+
     loginPage.fillEmail(Cypress.env('email'));
     loginPage.fillPassword(Cypress.env('password'));
     loginPage.submit();
+    cy.step('I sign-in with "<email>" and "<password>"');
 
     dashboardPage.waitFor();
+    cy.step('I wait for the dashboard');
 
     const tagName = faker.person.firstName();
     tagsPage.visit();
+    cy.step('I navigate to tags page');
+
     const tagForm = tagsPage.newTag();
     tagForm.setName(tagName);
 
     tagForm.getSlug().as('slug', { type: 'static' });
 
     tagForm.clickSave();
+    cy.step('I create the tag <TAG>');
 
     tagsPage.visit();
+    cy.step('I navigate to tags page');
+
     tagsPage.click(tagName);
+    cy.step('I select the <TAG> tag');
 
     tagForm.clickDelete();
     tagForm.confirmDeletion();
+    cy.step('I delete the tag');
 
     tagsPage.tagLists().should('not.include.text', tagName);
+    cy.step('I should not see the tag <TAG>');
 
     cy.get('@slug').then(slug => {
       tagPublicPage.visit(slug.val());
       tagPublicPage.getTitle().should('have.text', '404');
+      cy.step('the public page tag <TAG> should not exist');
     });
   });
 });
