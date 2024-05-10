@@ -3,7 +3,7 @@ export class TagPage {
     elements = {
         newTagButtonByText: () => cy.contains('a', 'New tag'),
         tagNameInput: () => cy.get('input#tag-name'),
-        slugInput: () => cy.get('input#tag-slug'), 
+        slugInput: () => cy.get('input#tag-slug'),
         tagDescriptionTextarea: () => cy.get('textarea#tag-description'),
         saveButton: () => cy.contains('button', 'Save'),
         tagTitle: () => cy.get('h3.gh-tag-list-name', { timeout: 30_000 }),
@@ -47,7 +47,8 @@ export class TagPage {
     }
 
     clickDeleteTagButton() {
-        this.elements.deleteTagButton().click();
+      this.elements.deleteTagButton().click();
+      cy.wait(1_000);
     }
 
     clickDeleteButton() {
