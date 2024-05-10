@@ -8,6 +8,10 @@ function collecScreenshots(ghostVersion) {
     ghostVersion,
   );
 
+  if (!fs.existsSync(screenshotsPath)) {
+    fs.mkdirSync(screenshotsPath);
+  }
+
   const imagesPaths = fs
     .readdirSync(screenshotsPath, {
       recursive: true,
