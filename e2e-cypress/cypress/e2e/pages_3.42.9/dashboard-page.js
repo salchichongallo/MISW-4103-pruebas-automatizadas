@@ -15,7 +15,8 @@ export class DashboardPage {
     }
 
     waitFor() {
-        cy.get('.inner h1.site-title', { timeout: 60_000 }).should('be.visible');
+        cy.get('#site-frame', { timeout: 60_000 }).should('be.visible');
+        cy.wait(5_000)
     }
 
     waitForDescription() {
@@ -40,5 +41,8 @@ export class DashboardPage {
 
     clickTagsLinkByHref() {
         this.elements.tagsLinkByHref().click();
+        cy.get('.gh-canvas-title', {timeout: 30_000})
+        .should('be.visible')
+        .contains('Tags');
     }
 }
