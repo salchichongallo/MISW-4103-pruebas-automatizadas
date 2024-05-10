@@ -9,13 +9,6 @@ describe('T2 - Creación de tag con caracteres especiales', () => {
     const dashboardPage = new DashboardPage();
     const tagPages = new TagPage();
 
-    beforeEach(() => {
-        loginPage.visit();
-        loginPage.fillEmail(Cypress.env('email'));
-        loginPage.fillPassword(Cypress.env('password'));
-        loginPage.submit();
-    });
-
     it(`
     Given The login page
         And I sign-in with "<email>" and "<password>"
@@ -28,15 +21,39 @@ describe('T2 - Creación de tag con caracteres especiales', () => {
         And I click on the save Tag
     Then I should see an error message saying "You must specify a name for the tag."
   `, () => {
+        loginPage.visit();
+        cy.step('The login page');
+
+        loginPage.fillEmail(Cypress.env('email'));
+        loginPage.fillPassword(Cypress.env('password'));
+        loginPage.submit();
+        cy.step('I sign-in with "<email>" and "<password>"');
+
+        dashboardPage.waitFor();
+        cy.step('I wait for the dashboard');
+
         dashboardPage.clickTagsLinkByHref();
+        cy.step('I navigate to tags page');
+
         tagPages.clickNewTagButtonByText();
+        cy.step('I select create New Tag');
+
         tagPages.fillTagName('     ');
+        cy.step('I create the tag name "     "');
+
         tagPages.fillTagSlug(faker.lorem.slug());
+        cy.step('I create slug Tag "SLUG"');
+
         tagPages.fillTagDescription(faker.lorem.sentence());
+        cy.step('I create the tag description "<DESCRIPTION>"');
+
         tagPages.clickSaveButton();
+        cy.step('I click on the save Tag');
+
         cy.get('.error .response:first')
             .invoke('text')
             .then(text => {
+                cy.step('I should see an error message saying "You must specify a name for the tag."');
                 expect(text.trim()).to.equal('You must specify a name for the tag.');
       });
 
