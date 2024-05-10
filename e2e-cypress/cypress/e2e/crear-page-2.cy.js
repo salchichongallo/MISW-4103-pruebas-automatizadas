@@ -7,16 +7,21 @@ describe('Save a page as draft', () => {
 
   beforeEach(() => {
     loginPage.visit();
+    cy.step('The login page');
     loginPage.fillEmail(Cypress.env('email'));
     loginPage.fillPassword(Cypress.env('password'));
     loginPage.submit();
+    cy.step('I sign-in with "<email>" and "<password>"');
   });
 
   it('As a user I log in, enter the Pages section, create a new Page as draft and verify its creation in the Pages list', () => {
     pagesPage.visit();
+    cy.step('I navigate to page page');
     const pageForm = pagesPage.newPage();
     pageForm.setTitle('test page');
     pagesPage.visit();
+    cy.step('I navigate to draft pages page');
     pagesPage.verifyPage('test page');
+    cy.step('the page is created in the Pages list');
   });
 });

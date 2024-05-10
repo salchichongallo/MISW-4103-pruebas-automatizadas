@@ -9,18 +9,25 @@ describe('Create a post', () => {
 
     beforeEach(() => {
         loginPage.visit();
+        cy.step('The login page');
         loginPage.fillEmail(Cypress.env('email'));
         loginPage.fillPassword(Cypress.env('password'));
         loginPage.submit();
+        cy.step('I sign-in with "<email>" and "<password>"');
         dashboardPage.waitFor();
+        cy.step('I wait for the dashboard');
     });
 
     it('T12 - As a user I log in, enter the Posts section, create a new Post, without publishing it and it should not appear on the published page', () => {
         postsPage.visit();
+        cy.step('I navigate to post page');
         postsPage.newPost();
         postsPage.fillTitle('Unpublished');
+        cy.step('I type the title');
         postsPage.backToPosts();
         postsPage.visitPublished();
+        cy.step('I navigate to published posts page');
         postsPage.verifyPostNotInPublished('Unpublished');
+        cy.step('the post is not listed in the published posts page');
     });
 });
