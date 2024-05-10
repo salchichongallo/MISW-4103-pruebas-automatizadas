@@ -4,7 +4,7 @@ import { LoginPage } from "../pages_3.42.9/Login-page";
 import { DashboardPage } from "../pages_3.42.9/dashboard-page";
 import { TagPage } from "../pages_3.42.9/tag-page";
 
-describe('T2 - Creación de tag con caracteres especiales', () => {
+describe('T1 - Creación de tag con nombre vacío', () => {
     const loginPage = new LoginPage();
     const dashboardPage = new DashboardPage();
     const tagPages = new TagPage();
