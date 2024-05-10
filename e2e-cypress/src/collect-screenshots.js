@@ -37,13 +37,13 @@ function collecScreenshots(ghostVersion) {
     const step = {
       name: stepName,
       image: imagePath,
-      index: parseInt(index),
+      step: parseInt(index),
     };
     stepsByScenario[scenario].steps.push(step);
   }
 
   Object.values(stepsByScenario).forEach(scenario => {
-    scenario.steps.sort((a, b) => (a.index < b.index ? -1 : 1));
+    scenario.steps.sort((a, b) => (a.step < b.step ? -1 : 1));
   });
 
   const reportDir = path.join(__dirname, '../reports');
@@ -53,7 +53,7 @@ function collecScreenshots(ghostVersion) {
 
   fs.writeFileSync(
     path.join(reportDir, `cypress-steps-${ghostVersion}.json`),
-    JSON.stringify(stepsByScenario, null, 2),
+    JSON.stringify(Object.values(stepsByScenario), null, 2),
   );
 }
 
