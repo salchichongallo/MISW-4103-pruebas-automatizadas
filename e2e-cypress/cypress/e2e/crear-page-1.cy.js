@@ -2,7 +2,7 @@ import { LoginPage } from './pages/LoginPage';
 import { PagesPage } from './pages/pages-page';
 import { DashboardPage } from './pages/dashboard-page';
 
-describe('Create a page', () => {
+describe('CREAPAGE1 - Create a page', () => {
   const loginPage = new LoginPage();
   const pagesPage = new PagesPage();
   const dashboardPage = new DashboardPage();

@@ -2,7 +2,7 @@ import { LoginPage } from './pages/LoginPage';
 import { PagesPage } from './pages/pages-page';
 import { DashboardPage } from './pages/dashboard-page';
 
-describe('Save a page as draft', () => {
+describe('CREAPAGE2 - Save a page as draft', () => {
   const loginPage = new LoginPage();
   const pagesPage = new PagesPage();
   const dashboardPage = new DashboardPage();
