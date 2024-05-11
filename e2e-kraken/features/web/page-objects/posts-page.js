@@ -18,82 +18,82 @@ class PostsPage extends GhostPage {
     return new PostForm(this);
   }
 
-  async clickOnPostButton(driver) {
-    let element = await driver.$('[data-test-nav="posts"]');
-    return await element.click();
+  async clickOnPostButton() {
+    const element = await this.driver.$('[data-test-nav="posts"]');
+    await element.click();
   }
 
-  async clickOnNewPostButton(driver) {
-    let element = await driver.$('[data-test-new-post-button]');
-    return await element.click();
+  async clickOnNewPostButton() {
+    const element = await this.driver.$('[data-test-new-post-button]');
+    await element.click();
   }
 
-  async enterTitle(driver, title) {
-    let element = await driver.$('[data-test-editor-title-input]');
-    return await element.setValue(title);
+  async enterTitle(title) {
+    const element = await this.driver.$('[data-test-editor-title-input]');
+    await element.setValue(title);
   }
 
-  async clickOnDroppableParagraph(driver) {
-    let element = await driver.$('p[data-koenig-dnd-droppable="true"]');
-    return await element.click();
+  async clickOnDroppableParagraph() {
+    const element = await this.driver.$('p[data-koenig-dnd-droppable="true"]');
+    await element.click();
   }
 
-  async clickOnPublishButton(driver) {
-    let element = await driver.$('[data-test-button="publish-flow"]');
-    return await element.click();
+  async clickOnPublishButton() {
+    const element = await this.driver.$('[data-test-button="publish-flow"]');
+    await element.click();
   }
 
-  async clickOnContinueFinalReviewButton(driver) {
-    let element = await driver.$('[data-test-button="continue"]');
-    return await element.click();
+  async clickOnContinueFinalReviewButton() {
+    const element = await this.driver.$('[data-test-button="continue"]');
+    await element.click();
   }
 
-  async clickOnPublishPostRightNowButton(driver) {
-    let element = await driver.$('[data-test-button="confirm-publish"]');
-    return await element.click();
+  async clickOnPublishPostRightNowButton() {
+    const element = await this.driver.$('[data-test-button="confirm-publish"]');
+    await element.click();
   }
 
-  async clickOnBackToDashboardPostButton(driver) {
-    let element = await driver.$('.gh-back-to-editor');
-    return await element.click();
+  async clickOnBackToDashboardPostButton() {
+    const element = await this.driver.$('.gh-back-to-editor');
+    await element.click();
   }
 
-  async clickOnSettingsButton(driver) {
-    let element = await driver.$('[data-test-psm-trigger]');
-    return await element.click();
+  async clickOnSettingsButton() {
+    const element = await this.driver.$('[data-test-psm-trigger]');
+    await element.click();
   }
 
-  async selectMembersOnlyOption(driver) {
-    let dropdown = await driver.$('[data-test-select="post-visibility"]');
+  async selectMembersOnlyOption() {
+    const dropdown = await this.driver.$('[data-test-select="post-visibility"]');
     await dropdown.click();
 
-    let option = await driver.$('option[value="members"]');
-    return await option.click();
+    const option = await this.driver.$('option[value="members"]');
+    await option.click();
   }
 
-  async clickOnPost(driver, postTitle) {
-    let element = await driver.$(`.gh-content-entry-title=${postTitle}`);
-    return await element.click();
+  async clickOnPost(postTitle) {
+    const element = await this.driver.$(`.gh-content-entry-title=${postTitle}`);
+    await element.click();
   }
 
-  async clickOnViewPostLink(driver) {
-    let element = await driver.$('a.post-view-link=View post');
-    return await element.click();
+  async clickOnViewPostLink() {
+    const element = await this.driver.$('a.post-view-link=View post');
+    await element.click();
   }
 
-  async clickOnPostsLinkBack(driver) {
-    let element = await driver.$('a[data-test-link="posts"]');
-    return await element.click();
+  async clickOnPostsLinkBack() {
+    const element = await this.driver.$('a[data-test-link="posts"]');
+    await element.click();
   }
 
-  async clickOnPublishedLink(driver) {
-    let element = await driver.$('a[data-test-nav-custom="posts-Published"]');
-    return await element.click();
+  async clickOnPublishedLink() {
+    const element = await this.driver.$('a[data-test-nav-custom="posts-Published"]');
+    await element.click();
   }
 
-  async clickOnDraftLink(driver) {
-    let element = await driver.$('a[data-test-nav-custom="posts-Drafts"]');
-    return await element.click();
+  async clickOnDraftLink() {
+    const element = await this.driver.$('a[data-test-nav-custom="posts-Drafts"]');
+    await element.click();
   }
 }
 
