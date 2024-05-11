@@ -18,6 +18,7 @@ Cypress.Commands.add('step', stepName => {
   const name = `${parent}---${stepIndex}---${stepName}`;
   cy.screenshot(name, {
     capture: 'viewport',
+    disableTimersAndAnimations: false,
     overwrite: true,
     scale: false,
     onAfterScreenshot() {

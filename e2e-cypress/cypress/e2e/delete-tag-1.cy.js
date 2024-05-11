@@ -57,6 +57,7 @@ describe('DELTAG1 - Tag is deleted from public page', () => {
     cy.step('I delete the tag');
 
     tagsPage.tagLists().should('not.include.text', tagName);
+    cy.wait(1_000);
     cy.step('I should not see the tag <TAG>');
 
     cy.get('@slug').then(slug => {

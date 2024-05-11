@@ -26,7 +26,7 @@ export class TagForm {
   setName(name) {
     cy.get('#tag-name').type(name);
   }
-  
+
   setSlug(slug) {
     cy.get('#tag-slug').type(slug);
   }
@@ -45,6 +45,7 @@ export class TagForm {
 
   clickDelete() {
     cy.get('[data-test-button="delete-tag"]').click();
+    cy.wait(1_000);
   }
 
   confirmDeletion() {
