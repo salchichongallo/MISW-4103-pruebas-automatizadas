@@ -24,3 +24,5 @@ yarn-error.log*
 /.nx
 
 /.env
+
+/resemblejs/node_modules

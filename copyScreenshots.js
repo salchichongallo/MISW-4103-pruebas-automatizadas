@@ -4,7 +4,7 @@ const path = require("path");
 // Ruta de la carpeta donde Cypress guarda las capturas de pantalla
 const cypressScreenshotsPath = path.join(
   __dirname,
-  "e2e-cypress/cypress/screenshots/ghost3429/crear-page-1.cy.js/"
+  "e2e-cypress/cypress/screenshots/ghost5822/create-tag-1.cy.js/"
 );
 
 console.log(cypressScreenshotsPath);
@@ -12,7 +12,7 @@ console.log(cypressScreenshotsPath);
 // Ruta de la carpeta bitmaps_reference de BackstopJS
 const backstopReferencePath = path.join(
   __dirname,
-  "backstopjs/backstop_data/ghost-3-42-9/"
+  "backstopjs/backstop_data/ghost5822/"
 );
 
 console.log(backstopReferencePath);
