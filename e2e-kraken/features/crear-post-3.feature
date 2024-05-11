@@ -14,7 +14,7 @@ Scenario: T11 - As a user, I log in, enter the Posts section, create a new Post,
         And I wait for 2 seconds
         And I click on the droppable paragraph
         And I wait for 2 seconds
-        And I click on the Posts link back
+    When I click on the Posts link back
         And I wait for 2 seconds
         And I click on the Draft link
         And I wait for 2 seconds
