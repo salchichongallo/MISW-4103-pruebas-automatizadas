@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "test:cypress": "MISW-4103-pruebas-automatizadas && npm run test:cypress && cd ..",
+    "screenshots:cypress": "node MISW-4103-pruebas-automatizadas/e2e-cypress/src/collect-screenshots.js",
+    "copy:screenshots": "node copyScreenshots.js",
+    "backstop:test": "backstop test",
+    "test": "npm run test:cypress && npm run screenshots:cypress npm run copy:screenshots && npm run backstop:test"
+  }
+}
