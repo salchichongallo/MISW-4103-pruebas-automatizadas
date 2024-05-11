@@ -1,9 +1,11 @@
 import { LoginPage } from './pages/LoginPage';
 import { PagesPage } from './pages/pages-page';
+import { DashboardPage } from './pages/dashboard-page';
 
 describe('Create a page', () => {
   const loginPage = new LoginPage();
   const pagesPage = new PagesPage();
+  const dashboardPage = new DashboardPage();
 
   beforeEach(() => {
     loginPage.visit();
@@ -12,6 +14,7 @@ describe('Create a page', () => {
     loginPage.fillPassword(Cypress.env('password'));
     loginPage.submit();
     cy.step('I sign-in with "<email>" and "<password>"');
+    dashboardPage.waitFor();
   });
 
   it('As a user I log in, enter the Pages section, create a new Page and verify its creation in the Pages list', () => {
