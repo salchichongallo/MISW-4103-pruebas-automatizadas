@@ -91,9 +91,14 @@ Para ejecutar las pruebas de regresión visual, ejecute los siguientes comandos:
 node e2e-cypress/src/collect-screenshots.js
 ```
 
-2. Generar reporte para comparar imágenes
+2. Navegar a la carpeta `resemblejs` y ejecutar el siguiente comando:
 ```
-cd resemblejs && node index.js
+npm install
+```
+
+3. Ejecutar las pruebas de regresión visual
+```
+node index.js
 ```
 
 ---
