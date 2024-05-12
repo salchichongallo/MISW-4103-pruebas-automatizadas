@@ -10,8 +10,8 @@ let ghost5822 = '../e2e-cypress/reports/cypress-steps-ghost5822.json';
 const { browsers, options } = config;
 
 async function executeTest() {
-  let datetime = new Date().toISOString().replace(/:/g,".");
-  if (!fs.existsSync(`./results/${datetime}`)){
+  let datetime = new Date().toISOString().replace(/:/g, '.');
+  if (!fs.existsSync(`./results/${datetime}`)) {
     fs.mkdirSync(`./results/${datetime}`, { recursive: true });
   }
 
@@ -36,9 +36,17 @@ async function executeTest() {
     return scenariosNamesGhost3.includes(scenarioName);
   });
 
+  // Array de resultados por imagen
+  let resultsPerImage = [];
+
   for (let i = 0; i < 9; i++) {
     let stepsForGhost3 = ghost3429Report[i].steps;
     let stepsForGhost5 = filteredGhost5822Report[i].steps;
+
+    resultsPerImage.push({
+      scenario: ghost3429Report[i].scenario,
+      results: [],
+    });
 
     for (let j = 0; j < stepsForGhost3.length; j++) {
       let pathGhost3 = stepsForGhost3[j]?.image;
@@ -60,15 +68,27 @@ async function executeTest() {
           analysisTime: data.analysisTime,
         };
 
-        fs.writeFileSync(
-          `./results/${ghost3429Report[i].scenario.split('\\')[ghost3429Report[i].scenario.split.length - 1]}-${stepsForGhost3[j].name}.png`,
-          data.getBuffer(),
-        );
+        let pathResult = `./results/${datetime}/${ghost3429Report[i].scenario.split('\\')[ghost3429Report[i].scenario.split.length - 1]}-${stepsForGhost3[j].name}.png`;
+        pathGhost3 = pathGhost3.split('e2e-cypress')[1].replace(/\\/g, '/');
+        pathGhost5 = pathGhost5.split('e2e-cypress')[1].replace(/\\/g, '/');
+
+        resultsPerImage[i].results.push({
+          name: stepsForGhost3[j].name,
+          resultInfo: `/resemblejs/${pathResult}`,
+          imageReference: `/e2e-cypress/${pathGhost3}`,
+          imageTest: `/e2e-cypress/${pathGhost5}`,
+          difference: data.misMatchPercentage,
+        });
+
+        fs.writeFileSync(pathResult, data.getBuffer());
       }
     }
   }
 
-  fs.writeFileSync(`./results/${datetime}/report.html`, createReport(datetime, resultInfo));
+  fs.writeFileSync(
+    `./results/${datetime}/report.html`,
+    createReport(datetime, resultsPerImage),
+  );
   fs.copyFileSync('./index.css', `./results/${datetime}/index.css`);
 
   return resultInfo;
@@ -76,45 +96,61 @@ async function executeTest() {
 
 (async () => console.log(await executeTest()))();
 
-function browser(b, info) {
-  return `<div class=" browser" id="test0">
-  <div class=" btitle">
-      <h2>Browser: ${b}</h2>
-      <p>Data: ${JSON.stringify(info)}</p>
-  </div>
-  <div class="imgline">
-    <div class="imgcontainer">
-      <span class="imgname">Reference</span>
-      <img class="img2" src="before-${b}.png" id="refImage" label="Reference">
-    </div>
-    <div class="imgcontainer">
-      <span class="imgname">Test</span>
-      <img class="img2" src="after-${b}.png" id="testImage" label="Test">
-    </div>
-  </div>
-  <div class="imgline">
-    <div class="imgcontainer">
-      <span class="imgname">Diff</span>
-      <img class="imgfull" src="./compare-${b}.png" id="diffImage" label="Diff">
-    </div>
-  </div>
-</div>`;
-}
-
 function createReport(datetime, resInfo) {
   return `
   <html>
       <head>
           <title> VRT Report </title>
-          <link href="index.css" type="text/css" rel="stylesheet">
+          <link href="./index.css" type="text/css" rel="stylesheet">
       </head>
       <body>
-          <h1>Report for
-               <a href="${config.url}"> ${config.url}</a>
+          <h1>Report for 
+               <a href="${config.url}">GHOST 3.42.9 -  ${config.url}</a>
           </h1>
           <p>Executed: ${datetime}</p>
-          <div id="visualizer">
-              ${config.browsers.map(b => browser(b, resInfo[b]))}
+          <div id="visualizer" style="
+          position: relative;
+          margin: 5px auto;
+          padding: 10px 30px;
+          background-color: #FAFAFA;
+          box-shadow: 0 3px 6px 0 rgba(0,0,0,0.16);
+          min-height: 40px;
+          -webkit-break-inside: avoid;
+          break-inside: avoid;
+          ">
+          <div>
+          ${resInfo.map(
+            (res, i) => `
+          <h1>
+            ${res.scenario.split('\\')[res.scenario.split('\\').length - 1]}
+          </h1>
+          <div class="result">
+            ${res.results.map(
+              (result, i) => `
+            <h2>${result.name}</h2>
+            <div style="display: flex; gap: 1rem">
+              <div style="display: flex; flex-direction: column; gap: 1rem">
+                <h3>Imagen - v3.42.9</h3>
+                <img style="width: 100%; border: 1px solid gray" src="${result.imageReference}" class="image-reference" alt="Image reference" />
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 1rem">
+                <h3>Imagen - v5.82.22</h3>
+                <img style="width: 100%; border: 1px solid gray" src="${result.imageTest}" class="image-test" alt="Image test" />
+              </div>
+            </div>
+            <br/>
+            <h3>Imagen - resultado de comparación</h3>
+            <img style="width: 100%; border: 1px solid gray" src="${result.resultInfo}" class="image-diff" alt="Image difference" />
+            <h2 class="percentage">Porcentaje de diferencia: ${result.difference}%</h2>
+            <hr/>
+            <br/>
+            <br/>
+            `
+            )}
+          </div>
+          `
+          )}
+    </div>
           </div>
       </body>
   </html>`;
