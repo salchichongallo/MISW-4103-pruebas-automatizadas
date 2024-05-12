@@ -100,7 +100,11 @@ npm install
 ```
 node index.js
 ```
-
+4. Una ves que tengamos el reporte generado con éxito, nos dirigimos a la siguiente ruta para ver el reporte en HTML:
+```
+resemblejs/results/
+```
+para ver el reporte en HTML
 ---
 
 #### Recursos de interés
