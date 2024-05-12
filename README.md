@@ -81,6 +81,21 @@ Pruebas Ghost v3.42.9:
 
 Nota: Si modifica las variables de entorno, asegúrese de ejecutar el siguiente comando para actualizar los valores en ambas aplicaciones: `npm run postinstall`
 
+### Ejecución de pruebas de regresión visual
+**NOTA: Antes de la ejecución de las pruebas de regresión visual, asegúrese de haber ejecutado las pruebas E2E con Cypress para cada versión de Ghost.**
+
+Para ejecutar las pruebas de regresión visual, ejecute los siguientes comandos:
+
+1. Generar reporte de escenarios en formato JSON
+```
+node e2e-cypress/src/collect-screenshots.js
+```
+
+2. Generar reporte para comparar imágenes
+```
+cd resemblejs && node index.js
+```
+
 ---
 
 #### Recursos de interés
