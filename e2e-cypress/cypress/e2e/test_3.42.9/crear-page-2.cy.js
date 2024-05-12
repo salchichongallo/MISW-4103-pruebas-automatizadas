@@ -7,26 +7,32 @@ describe('CREAPAGE2 - Save a page as draft', () => {
     const dashboardPage = new DashboardPage();
     const pagesPage = new PagePage();
 
-    beforeEach(() => {
-      loginPage.visit();
-      cy.step('The login page');
-      loginPage.fillEmail(Cypress.env('email'));
-      loginPage.fillPassword(Cypress.env('password'));
-      loginPage.submit();
-      cy.step('I sign-in with "<email>" and "<password>"');
-    });
-
     it('As a user I log in, enter the Pages section, create a new Page as draft and verify its creation in the Pages list', () => {
+        loginPage.visit();
+        cy.step('The login page');
+
+        loginPage.fillEmail(Cypress.env('email'));
+        loginPage.fillPassword(Cypress.env('password'));
+        loginPage.submit();
+        cy.step('I sign-in with "<email>" and "<password>"');
+
+        dashboardPage.waitFor();
         dashboardPage.clickPagesLinkByHref();
         cy.step('I navigate to page page');
+
         pagesPage.clickNewPageLinkByText();
         pagesPage.typeTitle('test page');
         cy.step('I type the title');
+
         pagesPage.setContent('Lorem ipsum dolor sit amet, consectetur adipiscing elit.');
+        cy.step('I type the content');
+
         pagesPage.visit();
+
         pagesPage.clickAllPagesElement();
         pagesPage.clickDraftPagesElement();
         cy.step('I navigate to draft pages page');
+
         pagesPage.verifyPage('test page');
         cy.step('the page is created in the Pages list');
     });
