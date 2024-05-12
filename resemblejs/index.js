@@ -20,28 +20,14 @@ async function executeTest() {
   let ghost5822Report = JSON.parse(fs.readFileSync(ghost5822, 'utf8'));
 
   let resultInfo = {};
-
-  // Guardando nombre de escenarios de Ghost 3
-  const scenariosNamesGhost3 = [];
-  for (const scenarioObj of ghost3429Report) {
-    let splittedPath = scenarioObj.scenario.split('\\');
-    let scenarioName = splittedPath[splittedPath.length - 1];
-    scenariosNamesGhost3.push(scenarioName);
-  }
-
-  // Filtrar los escenarios de Ghost 5822 en base a los de Ghost3
-  let filteredGhost5822Report = ghost5822Report.filter(scenarioObj => {
-    let splittedPath = scenarioObj.scenario.split('\\');
-    let scenarioName = splittedPath[splittedPath.length - 1];
-    return scenariosNamesGhost3.includes(scenarioName);
-  });
-
   // Array de resultados por imagen
   let resultsPerImage = [];
 
   for (let i = 0; i < 9; i++) {
     let stepsForGhost3 = ghost3429Report[i].steps;
-    let stepsForGhost5 = filteredGhost5822Report[i].steps;
+    // Extraemos informaicón
+    let scenario =  ghost3429Report[i].scenario.split('\\')[ghost3429Report[i].scenario.split('\\').length - 2];
+    let stepsForGhost5 = ghost5822Report.find(item => item.scenario.includes(scenario)).steps; 
 
     resultsPerImage.push({
       scenario: ghost3429Report[i].scenario,
@@ -91,10 +77,11 @@ async function executeTest() {
   );
   fs.copyFileSync('./index.css', `./results/${datetime}/index.css`);
 
+  console.log('Reporte HTML generado con éxito');
   return resultInfo;
 }
 
-(async () => console.log(await executeTest()))();
+(async () => await executeTest())();
 
 function createReport(datetime, resInfo) {
   return `
