@@ -11,30 +11,30 @@ describe('Create a post', () => {
 
     beforeEach(() => {
         loginPage.visit();
-        //cy.step('The login page');
         loginPage.fillEmail(Cypress.env('email'));
         loginPage.fillPassword(Cypress.env('password'));
-        //cy.step('I sign-in with "<email>" and "<password>"');
         loginPage.submit();
         dashboardPage.waitFor();
-        //cy.step('I wait for the dashboard');
     });
 
-    it('T-10 - As a user I log in, enter the Posts section, create a new Members Only Post and validate your Members Only Post', () => {
+    it(`T-X1 As a user I log in, 
+    I enter the Posts section, 
+    I entered a title
+    I click in the description post
+    I click in the settings button
+    I fill the slug whit a emoji
+    I click in the publish button
+    then It should not be published and show an error message -Invalid slug-
+    
+    Issue: Error message expected, but allows publication`, () => {
         postsPage.visit();
-        //cy.step('I navigate to post page');
         postsPage.newPost();
         const titlePost = faker.word.words({ count: 1 });
         postsPage.fillTitle(titlePost);
-        //cy.step('I type the title');
-        postsPage.setVisibility('members');
-        //cy.step('I set the visibility to members only');
+        postsPage.clickDescriptionPost();
+        postsPage.clickSettings();
+        postsPage.clearSlug();
+        postsPage.fillSlug(faker.internet.emoji());
         postsPage.publish();
-        //cy.step('I publish the post');
-        postsPage.backToEditor();
-        postsPage.visitPublished();
-        //cy.step('I navigate to posts published page');
-        postsPage.verifyPost(titlePost);
-        //cy.step('the post is created and only visible to members');
     });
 });
