@@ -104,7 +104,8 @@ node index.js
 ```
 resemblejs/results/
 ```
-para ver el reporte en HTML
+![image](https://github.com/salchichongallo/MISW-4103-pruebas-automatizadas/assets/157497216/817b4935-6243-4e3a-b823-08a56ea7232a)
+
 ---
 
 #### Recursos de interés
