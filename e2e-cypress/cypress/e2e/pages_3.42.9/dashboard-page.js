@@ -4,7 +4,7 @@ export class DashboardPage {
         siteTitle: () => cy.get('h1.site-title'),
         siteDescription: () => cy.get('h2.site-description'),
         siteHomeHeader: () => cy.get('header.site-home-header'),
-        postsLinkByHref: () => cy.get('a[href="#/posts/"]'),
+        postsLinkByHref: () => cy.get('.gh-nav-body a[href="#/posts/"]'),
         draftsLinkByHref: () => cy.get('a[href="#/posts/?type=draft"]'),
         pagesLinkByHref: () => cy.get('a[href="#/pages/"]'),
         tagsLinkByHref: () => cy.get('a[href="#/tags/"]')

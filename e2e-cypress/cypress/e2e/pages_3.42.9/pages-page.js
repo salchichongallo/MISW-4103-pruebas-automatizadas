@@ -9,9 +9,8 @@ export class PagePage {
         publishButtonByClass: () => cy.get('button.gh-btn.gh-btn-blue.gh-publishmenu-button.gh-btn-icon.ember-view'),
         publishedNotification: () => cy.contains('span', 'Published'),
         pageTitle: () => cy.get('h3.gh-content-entry-title', { timeout: 10_000 }),
-        allPagesElement: () => cy.get('span.ember-power-select-selected-item').contains('All pages'),
-        draftPagesElement: () => cy.get('li.ember-power-select-option').contains('Draft pages')
-
+        allPagesElement: () => cy.contains('All pages').parent(),
+        draftPagesElement: () => cy.get('li.ember-power-select-option').should('be.visible').contains('Draft pages')
     }
 
     visit() {
@@ -44,6 +43,7 @@ export class PagePage {
 
     clickAllPagesElement() {
         this.elements.allPagesElement().click();
+        cy.wait(2000);
     }
 
     clickDraftPagesElement() {

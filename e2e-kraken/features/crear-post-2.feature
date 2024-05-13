@@ -14,7 +14,7 @@ Scenario: T10 - As a user I log in, enter the Posts section, create a new Member
         And I wait for 2 seconds
         And I click on the settings button
         And I wait for 1 seconds
-        And I select the Members only option
+    When I select the Members only option
         And I wait for 1 seconds
         And I click on the droppable paragraph
         And I wait for 2 seconds
@@ -32,4 +32,4 @@ Scenario: T10 - As a user I log in, enter the Posts section, create a new Member
         And I wait for 2 seconds
         And I click on the settings button
         And I wait for 1 seconds
-        And I click on the View post link
+    Then I validate on the View post link
