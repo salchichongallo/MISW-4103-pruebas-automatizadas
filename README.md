@@ -108,7 +108,7 @@ resemblejs/results/
 
 ---
 #### Wiki semana 6
-[Semana 6]([https://nodejs.org/en/download](https://github.com/salchichongallo/MISW-4103-pruebas-automatizadas/wiki/Semana-6)
+[Semana 6](https://github.com/salchichongallo/MISW-4103-pruebas-automatizadas/wiki/Semana-6)
 
 #### Recursos de interés
 
