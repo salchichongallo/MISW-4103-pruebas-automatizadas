@@ -106,6 +106,19 @@ resemblejs/results/
 ```
 ![image](https://github.com/salchichongallo/MISW-4103-pruebas-automatizadas/assets/157497216/817b4935-6243-4e3a-b823-08a56ea7232a)
 
+5. Una vez tengas el reporte HTML creado, en Visutal Studio Code vas a instalar la extensión "Live Server" para poder visualizarlo ya que presenta errores de imagenes al visualizarlo en algunos navegadores.
+   
+![image](https://github.com/salchichongallo/MISW-4103-pruebas-automatizadas/assets/157497216/53b32bed-70d7-48ba-a47d-a281aff716b3)
+
+6. Cuando ya tengamos la extensión instalada, damos click derecho sobre el archivo HTML y en la opción "Open with live Server" para poder vizualizar el reporte.
+   
+![image](https://github.com/salchichongallo/MISW-4103-pruebas-automatizadas/assets/157497216/a075fcc7-95e3-4822-a577-44818793469f)
+
+7. Deberíamos ver algo como esto:
+   
+![image](https://github.com/salchichongallo/MISW-4103-pruebas-automatizadas/assets/157497216/84884241-8440-48bf-b262-335690865a3b)
+
+
 ---
 #### Wiki semana 6
 [Semana 6](https://github.com/salchichongallo/MISW-4103-pruebas-automatizadas/wiki/Semana-6)
