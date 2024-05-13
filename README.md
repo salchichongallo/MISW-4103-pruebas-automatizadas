@@ -107,8 +107,8 @@ resemblejs/results/
 ![image](https://github.com/salchichongallo/MISW-4103-pruebas-automatizadas/assets/157497216/817b4935-6243-4e3a-b823-08a56ea7232a)
 
 ---
-#### Wiki seamana 6
-[Semana 6]([https://nodejs.org/en/download](https://github.com/salchichongallo/MISW-4103-pruebas-automatizadas/wiki/Semana-6))
+#### Wiki semana 6
+[Semana 6]([https://nodejs.org/en/download](https://github.com/salchichongallo/MISW-4103-pruebas-automatizadas/wiki/Semana-6)
 
 #### Recursos de interés
 
