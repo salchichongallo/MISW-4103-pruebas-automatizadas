@@ -1,4 +1,4 @@
-import { faker } from '@faker-js/faker';
+import PostSchema from '../../../utils/post_schema.json';
 
 import { PostsPage } from './pages/PostPage';
 import { LoginPage } from './pages/LoginPage';
@@ -8,6 +8,7 @@ describe('Create a post', () => {
     const loginPage = new LoginPage();
     const postsPage = new PostsPage();
     const dashboardPage = new DashboardPage();
+    const randomIndex = Math.floor(Math.random() * PostSchema.length);
 
     beforeEach(() => {
         loginPage.visit();
@@ -31,13 +32,13 @@ describe('Create a post', () => {
     Issue: Error message expected, but allows publication`, () => {
         postsPage.visit();
         postsPage.newPost();
-        const titlePost = faker.word.words({ count: 1 });
+        const titlePost = PostSchema[randomIndex].post_title;
         postsPage.fillTitle(titlePost);
         postsPage.clickDescriptionPost();
-        postsPage.fillDescription(faker.lorem.paragraph());
+        postsPage.fillDescription(PostSchema[randomIndex].post_paragraphs);
         postsPage.clickSettings();
-        postsPage.fillSlug(faker.lorem.slug());
-        postsPage.fillPublishDate(faker.string.numeric({ length: 10 }));
+        postsPage.fillSlug(PostSchema[randomIndex].post_slug);
+        postsPage.fillPublishDate(PostSchema[randomIndex].post_naughty);
         postsPage.publish();
     });
 });

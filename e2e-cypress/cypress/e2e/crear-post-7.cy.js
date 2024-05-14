@@ -21,6 +21,7 @@ describe('Create a post', () => {
     I enter the Posts section, 
     I entered a title
     I click in the description post
+    I entered a description
     I click in the settings button
     I entered a excerpt with more than 300 characters
     I click in the publish button
@@ -29,6 +30,7 @@ describe('Create a post', () => {
         postsPage.newPost();
         postsPage.fillTitle(faker.word.words({ count: 1 }));
         postsPage.clickDescriptionPost();
+        postsPage.fillDescription(faker.lorem.paragraph());
 
         postsPage.clickSettings();
         postsPage.fillExcerpt(faker.string.alpha(301));

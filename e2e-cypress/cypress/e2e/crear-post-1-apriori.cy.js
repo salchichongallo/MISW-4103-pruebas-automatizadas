@@ -1,4 +1,4 @@
-import { faker } from '@faker-js/faker';
+import PostSchema from '../../../utils/post_schema.json';
 
 import { PostsPage } from './pages/PostPage';
 import { LoginPage } from './pages/LoginPage';
@@ -8,46 +8,40 @@ describe('CREAPOST1 - Create a post', () => {
   const loginPage = new LoginPage();
   const postsPage = new PostsPage();
   const dashboardPage = new DashboardPage();
+  const randomIndex = Math.floor(Math.random() * PostSchema.length);
 
   it(`T-9 As a user I log in, 
   enter the Posts section, 
   create a new Post (whith title, description, slug, excerpt),
   and then I verify its creation in the Posts list`, () => {
+
     loginPage.visit();
-    //cy.step('The login page');
 
     loginPage.fillEmail(Cypress.env('email'));
     loginPage.fillPassword(Cypress.env('password'));
     loginPage.submit();
-    //cy.step('I sign-in with "<email>" and "<password>"');
 
     dashboardPage.waitFor();
-    //cy.step('I wait for the dashboard');
 
     postsPage.visit();
-    //cy.step('I navigate to post page');
 
-    const titlePost = faker.word.words({ count: 1 });
+    const titlePost = PostSchema[randomIndex].post_title;
     postsPage.newPost();
     postsPage.fillTitle(titlePost);
-    //cy.step('I type the title');
 
     postsPage.clickDescriptionPost();
-    postsPage.fillDescription(faker.lorem.paragraph());
+    postsPage.fillDescription(PostSchema[randomIndex].post_paragraphs);
 
     postsPage.clickSettings();
-    postsPage.fillSlug(faker.lorem.slug());
-    postsPage.fillExcerpt(faker.lorem.sentence());
+    postsPage.fillSlug(PostSchema[randomIndex].post_slug);
+    postsPage.fillExcerpt(PostSchema[randomIndex].post_excerpt);
 
 
     postsPage.publish();
-    //cy.step('I publish the post');
 
     postsPage.backToEditor();
     postsPage.visit();
-    //cy.step('I navigate to posts page');
 
     postsPage.verifyPost(titlePost);
-    //cy.step('the post is created and listed in the posts page');
   });
 });

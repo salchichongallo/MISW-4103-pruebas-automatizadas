@@ -1,4 +1,4 @@
-import { faker } from '@faker-js/faker';
+import PostSchema from '../../../utils/post_schema.json';
 
 import { PostsPage } from './pages/PostPage';
 import { LoginPage } from './pages/LoginPage';
@@ -8,6 +8,7 @@ describe('Create a post', () => {
     const loginPage = new LoginPage();
     const postsPage = new PostsPage();
     const dashboardPage = new DashboardPage();
+    const randomIndex = Math.floor(Math.random() * PostSchema.length);
 
     beforeEach(() => {
         loginPage.visit();
@@ -27,10 +28,10 @@ describe('Create a post', () => {
         postsPage.visit();
         //cy.step('I navigate to post page');
         postsPage.newPost();
-        const titlePost = faker.word.words({ count: 1 });
+        const titlePost = PostSchema[randomIndex].post_title;
         postsPage.fillTitle(titlePost);
         postsPage.clickDescriptionPost();
-        postsPage.fillDescription(faker.lorem.paragraph());
+        postsPage.fillDescription(PostSchema[randomIndex].post_paragraphs);
         //cy.step('I type the title');
         postsPage.setVisibility('members');
         //cy.step('I set the visibility to members only');

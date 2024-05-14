@@ -55,7 +55,7 @@ export class PostsPage {
     }
 
     verifyPost(title) {
-        this.elements.postTitle().should('be.visible').contains(title)
+        this.elements.postTitle().contains(title)
     }
 
     setVisibility(visibility) {

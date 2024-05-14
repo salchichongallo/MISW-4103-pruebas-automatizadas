@@ -22,6 +22,8 @@ describe('Create a post', () => {
     I entered a title
     I click in the description post
     I click in the settings button
+    I fill the slug with a random slug
+    I fill the excerpt with a random sentence
     I remove the author
     I click in the publish button
     then waited for an error message -At least one author is required-`, () => {
@@ -29,8 +31,11 @@ describe('Create a post', () => {
         postsPage.newPost();
         postsPage.fillTitle(faker.word.words({ count: 1 }));
         postsPage.clickDescriptionPost();
+        postsPage.fillDescription(faker.lorem.paragraph());
 
         postsPage.clickSettings();
+        postsPage.fillSlug(faker.lorem.slug());
+        postsPage.fillExcerpt(faker.lorem.sentence());
         postsPage.clearAuthors();
 
         postsPage.publishButtonOnly();

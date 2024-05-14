@@ -19,7 +19,7 @@ describe('Create a post', () => {
 
     it(`T-X1 As a user I log in, 
     I enter the Posts section, 
-    I entered 255 characters in the title
+    I entered 255 characters in the title, description, and excerpt of a new Post,
     then verify its creation in the Posts list`, () => {
         postsPage.visit();
         postsPage.newPost();
@@ -27,6 +27,11 @@ describe('Create a post', () => {
         postsPage.fillTitle(titlePost);
     
         postsPage.clickDescriptionPost();
+        postsPage.fillDescription(faker.lorem.paragraph());
+
+        postsPage.clickSettings();
+        postsPage.fillExcerpt(faker.lorem.sentence());
+
         postsPage.publish();
         postsPage.backToEditor();
         postsPage.visit();

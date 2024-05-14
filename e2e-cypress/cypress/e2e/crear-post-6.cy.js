@@ -23,6 +23,7 @@ describe('Create a post', () => {
     I click in the description post
     I entered 1 character in the title
     I click in the description post
+    I entered a description
     I click in the publish button
     then waited for an error message that it cannot be more than 255 characters`, () => {
         postsPage.visit();
@@ -33,6 +34,8 @@ describe('Create a post', () => {
         postsPage.clickDescriptionPost();
         postsPage.fillTitle(faker.string.alpha(1));
         postsPage.clickDescriptionPost();
+        postsPage.fillDescription(faker.lorem.paragraph());
+
         postsPage.publishButtonOnly();
         postsPage.verifyErrorMessage('Title cannot be longer than 255 characters.')
     

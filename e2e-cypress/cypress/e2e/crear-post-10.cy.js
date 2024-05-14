@@ -21,6 +21,7 @@ describe('Create a post', () => {
     I enter the Posts section, 
     I entered a title
     I click in the description post
+    I fill the description whit a random paragraph
     I click in the settings button
     I fill the slug whit a emoji
     I click in the publish button
@@ -32,6 +33,7 @@ describe('Create a post', () => {
         const titlePost = faker.word.words({ count: 1 });
         postsPage.fillTitle(titlePost);
         postsPage.clickDescriptionPost();
+        postsPage.fillDescription(faker.lorem.paragraph());
         postsPage.clickSettings();
         postsPage.clearSlug();
         postsPage.fillSlug(faker.internet.emoji());
