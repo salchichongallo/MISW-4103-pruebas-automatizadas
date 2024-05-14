@@ -24,7 +24,7 @@ describe('CREAPOST1 - Create a post', () => {
     const randomIndex = Math.floor(Math.random() * mockData.length);
 
     postsPage.visit();
-    const titlePost = mockData[randomIndex].string_naughty;
+    const titlePost = mockData[randomIndex].post_title;
     postsPage.newPost();
     postsPage.fillTitle(titlePost);
 
