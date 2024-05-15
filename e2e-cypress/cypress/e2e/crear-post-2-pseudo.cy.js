@@ -20,17 +20,16 @@ describe('Create a post', () => {
         dashboardPage.waitFor();
     });
 
-    it(`T-10 - As a user I log in, 
+    it(`POST-2.2 - As a user I log in, 
     enter the Posts section, 
-    create a new Members Only Post whith title and description,
+    create a new Members Only Post whith title and the same description as the,
     and validate your Members Only Post`, () => {
-        const randomIndex = Math.floor(Math.random() * mockData.length);
         postsPage.visit();
         postsPage.newPost();
-        const titlePost = mockData[randomIndex].post_title;
+        const titlePost = mockData.post_title;
         postsPage.fillTitle(titlePost);
         postsPage.clickDescriptionPost();
-        postsPage.fillDescription(mockData[randomIndex].post_paragraphs);
+        postsPage.fillDescription(mockData.post_title);
         postsPage.setVisibility('members');
         postsPage.publish();
         postsPage.backToEditor();

@@ -20,7 +20,7 @@ describe('Create a post', () => {
         //cy.step('I wait for the dashboard');
     });
 
-    it(`T-10 - As a user I log in, 
+    it(`POST-2 - As a user I log in, 
     enter the Posts section, 
     create a new Members Only Post whith title and description,
     and validate your Members Only Post`, () => {

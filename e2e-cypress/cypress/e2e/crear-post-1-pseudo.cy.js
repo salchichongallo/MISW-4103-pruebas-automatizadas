@@ -20,15 +20,20 @@ describe('CREAPOST1 - Create a post', () => {
     dashboardPage.waitFor();
 }); 
 
-  it('T-9 As a user I log in, enter the Posts section, create a new Post and verify its creation in the Posts list', () => {
-    const randomIndex = Math.floor(Math.random() * mockData.length);
+  it(`POST-1.2 As a user I log in, 
+  enter the Posts section, 
+  create a new Post (whith title, and description, naughty slug and without excerpt),
+  and verify its creation in the Posts list`, () => {
 
     postsPage.visit();
-    const titlePost = mockData[randomIndex].post_title;
+    const titlePost = mockData.post_title;
     postsPage.newPost();
     postsPage.fillTitle(titlePost);
 
     postsPage.clickDescriptionPost();
+    postsPage.fillDescription(mockData.post_paragraphs);
+    postsPage.clickSettings();
+    postsPage.fillSlug(mockData.post_naughty);
     postsPage.publish();
 
     postsPage.backToEditor();

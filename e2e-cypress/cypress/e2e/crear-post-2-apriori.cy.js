@@ -21,9 +21,9 @@ describe('Create a post', () => {
         //cy.step('I wait for the dashboard');
     });
 
-    it(`T-10 - As a user I log in, 
+    it(`POST-2.1 - As a user I log in, 
     enter the Posts section, 
-    create a new Members Only Post whith title and description,
+    create a new Members Only Post whith title and naughty description,
     and validate your Members Only Post`, () => {
         postsPage.visit();
         //cy.step('I navigate to post page');
@@ -31,7 +31,7 @@ describe('Create a post', () => {
         const titlePost = PostSchema[randomIndex].post_title;
         postsPage.fillTitle(titlePost);
         postsPage.clickDescriptionPost();
-        postsPage.fillDescription(PostSchema[randomIndex].post_paragraphs);
+        postsPage.fillDescription(PostSchema[randomIndex].post_naughty);
         //cy.step('I type the title');
         postsPage.setVisibility('members');
         //cy.step('I set the visibility to members only');

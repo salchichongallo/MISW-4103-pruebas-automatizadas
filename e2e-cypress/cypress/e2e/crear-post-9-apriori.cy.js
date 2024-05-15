@@ -18,11 +18,11 @@ describe('Create a post', () => {
         dashboardPage.waitFor();
     });
 
-    it(`T-X1 As a user I log in, 
+    it(`POST-9.1 As a user I log in, 
     I enter the Posts section, 
-    I entered a title
+    I entered a title whit a 255 characters,
     I click in the description post
-    I fill the description whit a random paragraph
+    I fill the description whit a random naughty content
     I click in the settings button
     I fill the slug whit a random slug
     I fill the publish date whit a random number
@@ -32,10 +32,10 @@ describe('Create a post', () => {
     Issue: Error message expected, but allows publication`, () => {
         postsPage.visit();
         postsPage.newPost();
-        const titlePost = PostSchema[randomIndex].post_title;
+        const titlePost = PostSchema[randomIndex].post_title_255;
         postsPage.fillTitle(titlePost);
         postsPage.clickDescriptionPost();
-        postsPage.fillDescription(PostSchema[randomIndex].post_paragraphs);
+        postsPage.fillDescription(PostSchema[randomIndex].post_naughty);
         postsPage.clickSettings();
         postsPage.fillSlug(PostSchema[randomIndex].post_slug);
         postsPage.fillPublishDate(PostSchema[randomIndex].post_naughty);

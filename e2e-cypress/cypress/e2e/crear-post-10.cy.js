@@ -17,7 +17,7 @@ describe('Create a post', () => {
         dashboardPage.waitFor();
     });
 
-    it(`T-X1 As a user I log in, 
+    it(`POST-10 As a user I log in, 
     I enter the Posts section, 
     I entered a title
     I click in the description post

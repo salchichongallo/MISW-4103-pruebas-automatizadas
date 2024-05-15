@@ -20,26 +20,27 @@ describe('Create a post', () => {
         dashboardPage.waitFor();
     });
 
-    it(`T-X1 As a user I log in, 
+    it(`POST-8.2 As a user I log in, 
     I enter the Posts section, 
-    I entered a title
+    I entered a naughty title
     I click in the description post
+    I entered a naughty description
     I click in the settings button
     I fill the slug with a random slug
     I fill the excerpt with a random sentence
     I remove the author
     I click in the publish button
     then waited for an error message -At least one author is required-`, () => {
-        const randomIndex = Math.floor(Math.random() * mockData.length);
+
         postsPage.visit();
         postsPage.newPost();
-        postsPage.fillTitle(mockData[randomIndex].post_title);
+        postsPage.fillTitle(mockData.post_naughty);
         postsPage.clickDescriptionPost();
-        postsPage.fillDescription(mockData[randomIndex].post_paragraphs);
+        postsPage.fillDescription(mockData.post_naughty);
 
         postsPage.clickSettings();
-        postsPage.fillSlug(mockData[randomIndex].post_slug);
-        postsPage.fillExcerpt(mockData[randomIndex].post_excerpt);
+        postsPage.fillSlug(mockData.post_slug);
+        postsPage.fillExcerpt(mockData.post_excerpt);
         postsPage.clearAuthors();
 
         postsPage.publishButtonOnly();

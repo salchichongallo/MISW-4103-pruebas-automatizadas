@@ -18,9 +18,9 @@ describe('Create a post', () => {
         dashboardPage.waitFor();
     });
 
-    it(`T-X1 As a user I log in, 
+    it(`POST-5.1 As a user I log in, 
     I enter the Posts section, 
-    I entered 255 characters in the title, description, and excerpt of a new Post,
+    I entered 255 characters in the title, description, and naughty excerpt of a new Post,
     then verify its creation in the Posts list`, () => {
         postsPage.visit();
         postsPage.newPost();
@@ -31,7 +31,7 @@ describe('Create a post', () => {
         postsPage.fillDescription(PostSchema[randomIndex].post_paragraphs);
 
         postsPage.clickSettings();
-        postsPage.fillExcerpt(PostSchema[randomIndex].post_excerpt);
+        postsPage.fillExcerpt(PostSchema[randomIndex].post_naughty);
 
         postsPage.publish();
         postsPage.backToEditor();

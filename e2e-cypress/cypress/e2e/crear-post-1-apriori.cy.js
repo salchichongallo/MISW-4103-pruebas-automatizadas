@@ -10,9 +10,9 @@ describe('CREAPOST1 - Create a post', () => {
   const dashboardPage = new DashboardPage();
   const randomIndex = Math.floor(Math.random() * PostSchema.length);
 
-  it(`T-9 As a user I log in, 
+  it(`POST-1.1 As a user I log in, 
   enter the Posts section, 
-  create a new Post (whith title, description, slug, excerpt),
+  create a new Post (whith title, and naughty description, without slug and excerpt),
   and then I verify its creation in the Posts list`, () => {
 
     loginPage.visit();
@@ -30,10 +30,9 @@ describe('CREAPOST1 - Create a post', () => {
     postsPage.fillTitle(titlePost);
 
     postsPage.clickDescriptionPost();
-    postsPage.fillDescription(PostSchema[randomIndex].post_paragraphs);
+    postsPage.fillDescription(PostSchema[randomIndex].post_naughty);
 
     postsPage.clickSettings();
-    postsPage.fillSlug(PostSchema[randomIndex].post_slug);
     postsPage.fillExcerpt(PostSchema[randomIndex].post_excerpt);
 
 

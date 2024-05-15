@@ -10,9 +10,9 @@ describe('CREAPOST3 - Create a postCreate a post', () => {
     const dashboardPage = new DashboardPage();
     const randomIndex = Math.floor(Math.random() * PostSchema.length);
 
-    it(`T11 - As a user, I log in, 
+    it(`POST-3.1 - As a user, I log in, 
     enter the Posts section, 
-    create a new Post, without publishing it whith title and description and excerpt,
+    create a new Post, without publishing it whith title and description and naughty excerpt,
     and it must appear in the drafts list to be published later`, () => {
         loginPage.visit();
         //cy.step('The login page');
@@ -34,7 +34,7 @@ describe('CREAPOST3 - Create a postCreate a post', () => {
         postsPage.clickDescriptionPost();
         postsPage.fillDescription(PostSchema[randomIndex].post_paragraphs);
         postsPage.clickSettings();
-        postsPage.fillExcerpt(PostSchema[randomIndex].post_excerpt);
+        postsPage.fillExcerpt(PostSchema[randomIndex].post_naughty);
         //cy.step('I type the title');
 
         postsPage.backToPosts();

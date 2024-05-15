@@ -9,7 +9,7 @@ describe('CREAPOST4 - Create a post', () => {
     const postsPage = new PostsPage();
     const dashboardPage = new DashboardPage();
 
-    it(`T12 - As a user I log in, 
+    it(`POST-4 - As a user I log in, 
     enter the Posts section, 
     create a new Post whith title and slug, without publishing it 
     and it should not appear on the published page`, () => {

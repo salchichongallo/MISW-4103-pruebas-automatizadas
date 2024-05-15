@@ -20,21 +20,20 @@ describe('Create a post', () => {
         dashboardPage.waitFor();
     });
 
-    it(`T-X1 As a user I log in, 
+    it(`POST-5.2 As a user I log in, 
     I enter the Posts section, 
-    I entered 255 characters in the title, description, and excerpt of a new Post,
+    I entered 255 characters in the title, naughty description, and naughty slug of a new Post,
     then verify its creation in the Posts list`, () => {
-        const randomIndex = Math.floor(Math.random() * mockData.length);
         postsPage.visit();
         postsPage.newPost();
-        const titlePost = mockData[randomIndex].post_title_255;
+        const titlePost = mockData.post_title_255;
         postsPage.fillTitle(titlePost);
     
         postsPage.clickDescriptionPost();
-        postsPage.fillDescription(mockData[randomIndex].post_paragraphs);
+        postsPage.fillDescription(mockData.post_naughty);
 
         postsPage.clickSettings();
-        postsPage.fillExcerpt(mockData[randomIndex].post_excerpt);
+        postsPage.fillSlug(mockData.post_naughty);
 
         postsPage.publish();
         postsPage.backToEditor();

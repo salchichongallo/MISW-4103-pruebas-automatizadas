@@ -17,7 +17,7 @@ describe('Create a post', () => {
         dashboardPage.waitFor();
     });
 
-    it(`T-X1 As a user I log in, 
+    it(`POST-6 As a user I log in, 
     I enter the Posts section, 
     I entered 255 characters in the title
     I click in the description post

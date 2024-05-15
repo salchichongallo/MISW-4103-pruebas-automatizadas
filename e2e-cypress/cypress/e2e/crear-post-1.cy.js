@@ -9,7 +9,7 @@ describe('CREAPOST1 - Create a post', () => {
   const postsPage = new PostsPage();
   const dashboardPage = new DashboardPage();
 
-  it(`T-9 As a user I log in, 
+  it(`POST-1 As a user I log in, 
   enter the Posts section, 
   create a new Post (whith title, description, slug, excerpt),
   and then I verify its creation in the Posts list`, () => {

@@ -10,9 +10,9 @@ describe('CREAPOST4 - Create a post', () => {
     const dashboardPage = new DashboardPage();
     const randomIndex = Math.floor(Math.random() * PostSchema.length);
 
-    it(`T12 - As a user I log in, 
+    it(`POST-4.1 - As a user I log in, 
     enter the Posts section, 
-    create a new Post whith title and slug, without publishing it 
+    create a new Post whith title and naughty slug, without publishing it 
     and it should not appear on the published page`, () => {
         loginPage.visit();
         //cy.step('The login page');
@@ -32,7 +32,7 @@ describe('CREAPOST4 - Create a post', () => {
         postsPage.newPost();
         postsPage.fillTitle(titlePost);
         postsPage.clickSettings();
-        postsPage.fillSlug(PostSchema[randomIndex].post_slug);
+        postsPage.fillSlug(PostSchema[randomIndex].post_naughty);
         //cy.step('I type the title');
 
         postsPage.backToPosts();

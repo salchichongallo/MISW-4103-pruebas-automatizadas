@@ -20,19 +20,18 @@ describe('CREAPOST4 - Create a post', () => {
         dashboardPage.waitFor();
     });
 
-    it(`T12 - As a user I log in, 
+    it(`POST-4.2 - As a user I log in, 
     enter the Posts section, 
-    create a new Post whith title and slug, without publishing it 
+    create a new Post whith title and expert whith 300 caracters, without publishing it 
     and it should not appear on the published page`, () => {
-        const randomIndex = Math.floor(Math.random() * mockData.length);
         postsPage.visit();
         //cy.step('I navigate to post page');
 
-        const titlePost = mockData[randomIndex].post_title;
+        const titlePost = mockData.post_title;
         postsPage.newPost();
         postsPage.fillTitle(titlePost);
         postsPage.clickSettings();
-        postsPage.fillSlug(mockData[randomIndex].post_slug);
+        postsPage.fillExcerpt(mockData.post_excerpt_300);
         //cy.step('I type the title');
 
         postsPage.backToPosts();

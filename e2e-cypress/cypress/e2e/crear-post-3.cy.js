@@ -9,7 +9,7 @@ describe('CREAPOST3 - Create a postCreate a post', () => {
     const postsPage = new PostsPage();
     const dashboardPage = new DashboardPage();
 
-    it(`T11 - As a user, I log in, 
+    it(`POST-3 - As a user, I log in, 
     enter the Posts section, 
     create a new Post, without publishing it whith title and description and excerpt,
     and it must appear in the drafts list to be published later`, () => {

@@ -20,22 +20,22 @@ describe('CREAPOST3 - Create a postCreate a post', () => {
         dashboardPage.waitFor();
     });
 
-    it(`T11 - As a user, I log in, 
+    it(`POST-3.2 - As a user, I log in, 
     enter the Posts section, 
-    create a new Post, without publishing it whith title and description and excerpt,
+    create a new Post, without publishing it whith title and description and naughty excerpt and naughty slug,
     and it must appear in the drafts list to be published later`, () => {
-        const randomIndex = Math.floor(Math.random() * mockData.length);
 
         postsPage.visit();
         //cy.step('I navigate to post page');
 
-        const titlePost = mockData[randomIndex].post_title;
+        const titlePost = mockData.post_title;
         postsPage.newPost();
         postsPage.fillTitle(titlePost);
         postsPage.clickDescriptionPost();
-        postsPage.fillDescription(mockData[randomIndex].post_paragraphs);
+        postsPage.fillDescription(mockData.post_paragraphs);
         postsPage.clickSettings();
-        postsPage.fillExcerpt(mockData[randomIndex].post_excerpt);
+        postsPage.fillSlug(mockData.post_naughty);
+        postsPage.fillExcerpt(mockData.post_naughty);
         //cy.step('I type the title');
 
         postsPage.backToPosts();

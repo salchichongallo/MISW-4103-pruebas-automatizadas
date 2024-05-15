@@ -18,13 +18,14 @@ describe('Create a post', () => {
         dashboardPage.waitFor();
     });
 
-    it(`T-X1 As a user I log in, 
+    it(`POST-10.1 As a user I log in, 
     I enter the Posts section, 
     I entered a title
     I click in the description post
     I fill the description whit a random paragraph
     I click in the settings button
     I fill the slug whit a emoji
+    I fill the excerpt whit only 1 character
     I click in the publish button
     then It should not be published and show an error message -Invalid slug-
     
@@ -37,6 +38,7 @@ describe('Create a post', () => {
         postsPage.fillDescription(PostSchema[randomIndex].post_paragraphs);
         postsPage.clickSettings();
         postsPage.clearSlug();
+        postsPage.fillExcerpt(PostSchema[randomIndex].post_letter)
         postsPage.fillSlug(PostSchema[3].post_naughty);
         postsPage.publish();
     });
