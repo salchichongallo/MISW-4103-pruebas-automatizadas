@@ -1,9 +1,7 @@
 export class MembersPage {
   visit() {
     cy.visit('/ghost/#/members');
-    cy.get('.gh-canvas-title')
-      .should('be.visible')
-      .contains('Members');
+    cy.get('.gh-canvas-title').should('be.visible').contains('Members');
   }
 
   newMember() {
@@ -37,6 +35,28 @@ export class MemberForm {
   clickSave() {
     cy.get('[data-test-button="save"]').click();
     cy.wait(2000);
+  }
+
+  setLabels(labels) {
+    const input = cy.get('.gh-member-labels input');
+    labels.forEach(label => input.type(`${label}{enter}`, { force: true }));
+  }
+
+  setNote(note) {
+    const textarea = cy.get('#member-note');
+    textarea.click({ force: true });
+    textarea.type(note);
+  }
+
+  toggleNewsletter(subscribed) {
+    const checkbox = '[data-test-checkbox="member-subscribed"]';
+    cy.get(checkbox)
+      .invoke('prop', 'checked')
+      .then(checked => {
+        if (checked != subscribed) {
+          cy.get(checkbox).click({ force: true });
+        }
+      });
   }
 }
 
