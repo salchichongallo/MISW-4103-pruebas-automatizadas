@@ -1,4 +1,4 @@
-import tagDataMokaroo from './data_apriori_tag.json';
+import tagDataMockaroo from './data_apriori_tag.json';
 import { LoginPage } from '../pages/LoginPage';
 import { TagsPage } from '../pages/tags-page';
 import { DashboardPage } from '../pages/dashboard-page';
@@ -23,11 +23,11 @@ describe('EA6 - Creación de tag con SLUG vacio', () => {
       const dashboardPage = new DashboardPage();
       const tagsPage = new TagsPage();
   
-       // Usando variables de Mokaroo
-       const nameTag = tagDataMokaroo[5].name_tag; 
+       // Usando variables de Mockaroo
+       const nameTag = tagDataMockaroo[5].name_tag; 
        const slugTag = "    ";
-       const descriptionTag = tagDataMokaroo[5].description;
-       const colorTag = (tagDataMokaroo[5].color).replace('#', '');
+       const descriptionTag = tagDataMockaroo[5].description;
+       const colorTag = (tagDataMockaroo[5].color).replace('#', '');
   
       // Given The login page
       loginPage.visit();

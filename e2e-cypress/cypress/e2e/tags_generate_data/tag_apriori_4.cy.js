@@ -1,7 +1,7 @@
 import { DashboardPage } from '../pages/dashboard-page';
 import { LoginPage } from '../pages/LoginPage';
 import { TagsPage } from '../pages/tags-page';
-import tagDataMokaroo from './data_apriori_tag.json';
+import tagDataMockaroo from './data_apriori_tag.json';
 
 
 describe('EA4 - Creación de tag con color erroneo', () => {
@@ -22,11 +22,11 @@ describe('EA4 - Creación de tag con color erroneo', () => {
       const dashboardPage = new DashboardPage();
       const tagsPage = new TagsPage();
    
-    // Usando variables de Mokaroo
-    const nameTag = tagDataMokaroo[3].name_tag;
-    const slugTag = tagDataMokaroo[3].slug;
-    const descriptionTag = tagDataMokaroo[3].description;
-    const colorTag = tagDataMokaroo[3].color
+    // Usando variables de Mockaroo
+    const nameTag = tagDataMockaroo[3].name_tag;
+    const slugTag = tagDataMockaroo[3].slug;
+    const descriptionTag = tagDataMockaroo[3].description;
+    const colorTag = tagDataMockaroo[3].color
 
       // Given The login page
       loginPage.visit(); 

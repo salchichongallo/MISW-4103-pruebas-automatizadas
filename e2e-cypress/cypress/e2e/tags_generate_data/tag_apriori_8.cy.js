@@ -1,4 +1,4 @@
-import tagDataMokaroo from './data_apriori_tag.json';
+import tagDataMockaroo from './data_apriori_tag.json';
 import { LoginPage } from '../pages/LoginPage';
 import { TagsPage } from '../pages/tags-page';
 import { DashboardPage } from '../pages/dashboard-page';
@@ -22,10 +22,10 @@ describe('EA8 - Creación de tag con descripción vacía', () => {
       const dashboardPage = new DashboardPage();
       const tagsPage = new TagsPage();
   
-     // Usando variables de Mokaroo
-     const nameTag = tagDataMokaroo[7].name_tag;
-     const slugTag = tagDataMokaroo[7].slug;
-     const colorTag = (tagDataMokaroo[7].color).replace('#', '');
+     // Usando variables de Mockaroo
+     const nameTag = tagDataMockaroo[7].name_tag;
+     const slugTag = tagDataMockaroo[7].slug;
+     const colorTag = (tagDataMockaroo[7].color).replace('#', '');
   
       // Given The login page
       loginPage.visit();

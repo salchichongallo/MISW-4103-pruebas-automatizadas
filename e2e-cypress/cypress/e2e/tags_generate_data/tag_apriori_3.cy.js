@@ -1,4 +1,4 @@
-import tagDataMokaroo from './data_apriori_tag.json';
+import tagDataMockaroo from './data_apriori_tag.json';
 import { LoginPage } from '../pages/LoginPage';
 import { TagsPage } from '../pages/tags-page';
 import { DashboardPage } from '../pages/dashboard-page';
@@ -23,11 +23,11 @@ describe('EA3 - Creación de tag con nombre mayor a 191 caracteres', () => {
 
   `, () => {
 
-        // Usando variables de Mokaroo
-        const nameTag = tagDataMokaroo[2].name_tag.repeat(40);
-        const slugTag = tagDataMokaroo[2].slug;
-        const descriptionTag = tagDataMokaroo[2].description;
-        const colorTag = (tagDataMokaroo[2].color).replace('#', '');
+        // Usando variables de Mockaroo
+        const nameTag = tagDataMockaroo[2].name_tag.repeat(40);
+        const slugTag = tagDataMockaroo[2].slug;
+        const descriptionTag = tagDataMockaroo[2].description;
+        const colorTag = (tagDataMockaroo[2].color).replace('#', '');
 
      
         // Given The login page

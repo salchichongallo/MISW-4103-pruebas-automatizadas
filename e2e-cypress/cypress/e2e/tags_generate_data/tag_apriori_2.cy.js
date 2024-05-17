@@ -1,7 +1,7 @@
 import { LoginPage } from '../pages/LoginPage';
 import { TagsPage } from '../pages/tags-page';
 import { DashboardPage } from '../pages/dashboard-page';
-import tagDataMokaroo from './data_apriori_tag.json';
+import tagDataMockaroo from './data_apriori_tag.json';
 
 
 describe('EA2 - Creación de tag con caracteres especiales en Name', () => {
@@ -24,11 +24,11 @@ describe('EA2 - Creación de tag con caracteres especiales en Name', () => {
     const dashboardPage = new DashboardPage();
     const tagsPage = new TagsPage();
 
-     // Usando variables de Mokaroo
-     const nameTag = tagDataMokaroo[1].name_tag; 
-     const slugTag = tagDataMokaroo[1].slug;
-     const descriptionTag = tagDataMokaroo[1].description;
-     const colorTag = (tagDataMokaroo[1].color).replace('#', '');
+     // Usando variables de Mockaroo
+     const nameTag = tagDataMockaroo[1].name_tag; 
+     const slugTag = tagDataMockaroo[1].slug;
+     const descriptionTag = tagDataMockaroo[1].description;
+     const colorTag = (tagDataMockaroo[1].color).replace('#', '');
 
     // Given The login page
     loginPage.visit();

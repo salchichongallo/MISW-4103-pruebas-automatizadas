@@ -1,4 +1,4 @@
-import tagDataMokaroo from './data_apriori_tag.json';
+import tagDataMockaroo from './data_apriori_tag.json';
 import { LoginPage } from '../pages/LoginPage';
 import { TagsPage } from '../pages/tags-page';
 import { DashboardPage } from '../pages/dashboard-page';
@@ -22,11 +22,11 @@ describe('EA7 - Creación de tag con descripción mayor a 500 caracteres', () =>
         const dashboardPage = new DashboardPage();
         const tagsPage = new TagsPage();
 
-        // Usando variables de Mokaroo
-        const nameTag = tagDataMokaroo[6].name_tag;
-        const slugTag = tagDataMokaroo[6].slug;
-        const descriptionTag = tagDataMokaroo[6].description.repeat(20);
-        const colorTag = (tagDataMokaroo[6].color).replace('#', '');
+        // Usando variables de Mockaroo
+        const nameTag = tagDataMockaroo[6].name_tag;
+        const slugTag = tagDataMockaroo[6].slug;
+        const descriptionTag = tagDataMockaroo[6].description.repeat(20);
+        const colorTag = (tagDataMockaroo[6].color).replace('#', '');
         
         // Given The login page
         loginPage.visit(); 

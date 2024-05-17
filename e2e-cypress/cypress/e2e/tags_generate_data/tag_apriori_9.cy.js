@@ -1,4 +1,4 @@
-import tagDataMokaroo from './data_apriori_tag.json';
+import tagDataMockaroo from './data_apriori_tag.json';
 import { LoginPage } from '../pages/LoginPage';
 import { TagsPage } from '../pages/tags-page';
 import { DashboardPage } from '../pages/dashboard-page';
@@ -22,11 +22,11 @@ describe('EA9 - Creación de tag SLUG mayor a 191 caracteres', () => {
         const dashboardPage = new DashboardPage();
         const tagsPage = new TagsPage();
   
-        // Usando variables de Mokaroo
-        const nameTag = tagDataMokaroo[8].name_tag;
-        const slugTag = tagDataMokaroo[8].slug.repeat(11);
-        const descriptionTag = tagDataMokaroo[8].description;
-        const colorTag = (tagDataMokaroo[8].color).replace('#', '');
+        // Usando variables de Mockaroo
+        const nameTag = tagDataMockaroo[8].name_tag;
+        const slugTag = tagDataMockaroo[8].slug.repeat(11);
+        const descriptionTag = tagDataMockaroo[8].description;
+        const colorTag = (tagDataMockaroo[8].color).replace('#', '');
   
         // Given The login page
         loginPage.visit(); 

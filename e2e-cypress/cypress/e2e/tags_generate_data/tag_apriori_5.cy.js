@@ -1,4 +1,4 @@
-import tagDataMokaroo from './data_apriori_tag.json';
+import tagDataMockaroo from './data_apriori_tag.json';
 import { LoginPage } from '../pages/LoginPage';
 import { TagsPage } from '../pages/tags-page';
 import { DashboardPage } from '../pages/dashboard-page';
@@ -23,11 +23,11 @@ describe('EA5 - Creación de tag con datos requeridos', () => {
       const dashboardPage = new DashboardPage();
       const tagsPage = new TagsPage();
   
-       // Usando variables de Mokaroo
-       const nameTag = tagDataMokaroo[4].name_tag; 
-       const slugTag = tagDataMokaroo[4].slug;
-       const descriptionTag = tagDataMokaroo[4].description;
-       const colorTag = (tagDataMokaroo[4].color).replace('#', '');
+       // Usando variables de Mockaroo
+       const nameTag = tagDataMockaroo[4].name_tag; 
+       const slugTag = tagDataMockaroo[4].slug;
+       const descriptionTag = tagDataMockaroo[4].description;
+       const colorTag = (tagDataMockaroo[4].color).replace('#', '');
   
       // Given The login page
       loginPage.visit();

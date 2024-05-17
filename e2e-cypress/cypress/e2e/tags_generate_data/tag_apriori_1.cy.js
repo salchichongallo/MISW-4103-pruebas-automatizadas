@@ -1,7 +1,7 @@
 import { LoginPage } from '../pages/LoginPage';
 import { TagsPage } from '../pages/tags-page';
 import { DashboardPage } from '../pages/dashboard-page';
-import tagDataMokaroo from './data_apriori_tag.json';
+import tagDataMockaroo from './data_apriori_tag.json';
 
 describe('EA1 - Creación de tag con nombre vacío', () => {
   it(`
@@ -22,11 +22,11 @@ describe('EA1 - Creación de tag con nombre vacío', () => {
     const tagsPage = new TagsPage();
 
    
-    // Usando variables de Mokaroo
+    // Usando variables de Mockaroo
     const nameTag = "      "
-    const slugTag = tagDataMokaroo[0].slug;
-    const descriptionTag = tagDataMokaroo[0].description;
-    const colorTag = (tagDataMokaroo[0].color).replace('#', '');
+    const slugTag = tagDataMockaroo[0].slug;
+    const descriptionTag = tagDataMockaroo[0].description;
+    const colorTag = (tagDataMockaroo[0].color).replace('#', '');
 
     // Given The login page
     loginPage.visit();  
