@@ -5,10 +5,11 @@ export class RandomMemberProvider {
     longName = false,
     invalidEmail = false,
     maxNote = false,
+    longEmail = false,
   } = {}) {
     return {
       name: this.getName(longName),
-      email: this.getEmail(invalidEmail),
+      email: this.getEmail(invalidEmail, longEmail),
       labels: faker.word.words({ count: { min: 1, max: 10 } }).split(' '),
       note: this.getNote(maxNote),
       subscribed: faker.datatype.boolean(),
@@ -22,9 +23,20 @@ export class RandomMemberProvider {
     return faker.word.words(1).repeat(count).slice(0, 191);
   }
 
-  static getEmail(invalid) {
-    if (!invalid) return faker.internet.email();
-    return faker.internet.email().replace('@', faker.string.symbol(5) + '@');
+  static getEmail(invalid, longEmail) {
+    let email = invalid
+      ? faker.internet.email().replace('@', faker.string.symbol(5) + '@')
+      : faker.internet.email();
+
+    if (longEmail) {
+      email =
+        faker.word
+          .words({ count: { min: 20, max: 100 } })
+          .replace(/\s/g, '')
+          .toLowerCase() + email;
+    }
+
+    return email;
   }
 
   static getNote(maxNote) {

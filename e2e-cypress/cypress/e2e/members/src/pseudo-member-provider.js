@@ -5,6 +5,7 @@ export class PseudoMemberProvider {
     longName = false,
     invalidEmail = false,
     maxNote = false,
+    longEmail = false,
   } = {}) {
     const firstName = faker.person.firstName();
     const lastName = faker.person.lastName();
@@ -17,6 +18,14 @@ export class PseudoMemberProvider {
     let email = faker.internet.email({ firstName, lastName });
     if (invalidEmail) {
       email = email.replace('@', faker.string.symbol(5) + '@');
+    }
+
+    if (longEmail) {
+      email =
+        faker.word
+          .words({ count: { min: 20, max: 100 } })
+          .replace(/\s/g, '')
+          .toLowerCase() + email;
     }
 
     let note = faker.lorem.paragraph();

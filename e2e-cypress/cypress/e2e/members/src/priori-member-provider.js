@@ -5,6 +5,7 @@ export class PrioriMemberProvider {
     longName = false,
     invalidEmail = false,
     maxNote = false,
+    longEmail = false,
   } = {}) {
     const member = await this.getMockarooMember();
     member.labels = member.labels.split(' ');
@@ -16,6 +17,14 @@ export class PrioriMemberProvider {
 
     if (invalidEmail) {
       member.email = member.email.replace('@', faker.string.symbol(5) + '@');
+    }
+
+    if (longEmail) {
+      member.email =
+        faker.word
+          .words({ count: { min: 20, max: 100 } })
+          .replace(/\s/g, '')
+          .toLowerCase() + member.email;
     }
 
     if (maxNote) {
