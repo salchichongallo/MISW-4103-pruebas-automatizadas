@@ -1,6 +1,6 @@
-import { LoginPage } from './pages/LoginPage';
-import { PagesPage } from './pages/pages-page';
-import { DashboardPage } from './pages/dashboard-page';
+import { LoginPage } from '../pages/LoginPage';
+import { PagesPage } from '../pages/pages-page';
+import { DashboardPage } from '../pages/dashboard-page';
 
 describe('PSEUDO: CREAPAGE2 - Save a page as draft', () => {
   const loginPage = new LoginPage();
@@ -9,7 +9,7 @@ describe('PSEUDO: CREAPAGE2 - Save a page as draft', () => {
 
   let mockData;
   beforeEach(() => {
-    cy.request('https://api.mockaroo.com/api/202bab00?count=10&key=57a96b40').then(
+    cy.request('https://my.api.mockaroo.com/pagesPseudo?key=57a96b40').then(
       response => {
         mockData = response.body;
       },

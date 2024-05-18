@@ -1,5 +1,5 @@
-import { LoginPage } from './pages/LoginPage';
-import { PagesPage } from './pages/pages-page';
+import { LoginPage } from '../pages/LoginPage';
+import { PagesPage } from '../pages/pages-page';
 
 describe('PSEUDO: Save a page as draft with title, content and image', () => {
   const loginPage = new LoginPage();
@@ -7,7 +7,7 @@ describe('PSEUDO: Save a page as draft with title, content and image', () => {
 
   let mockData;
   beforeEach(() => {
-    cy.request('https://api.mockaroo.com/api/202bab00?count=10&key=57a96b40').then(
+    cy.request('https://my.api.mockaroo.com/pagesPseudo?key=57a96b40').then(
       response => {
         mockData = response.body;
       },

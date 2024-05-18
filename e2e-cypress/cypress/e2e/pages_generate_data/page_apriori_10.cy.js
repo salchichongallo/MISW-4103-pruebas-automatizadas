@@ -1,5 +1,5 @@
-import { LoginPage } from './pages/LoginPage';
-import { PagesPage } from './pages/pages-page';
+import { LoginPage } from '../pages/LoginPage';
+import { PagesPage } from '../pages/pages-page';
 
 describe('APRIORI: Save a page as draft with image only', () => {
   const loginPage = new LoginPage();

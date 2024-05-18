@@ -1,5 +1,5 @@
-import { LoginPage } from './pages/LoginPage';
-import { PagesPage } from './pages/pages-page';
+import { LoginPage } from '../pages/LoginPage';
+import { PagesPage } from '../pages/pages-page';
 
 import pageDataMockaroo from './data-apriori-pages.json';
 

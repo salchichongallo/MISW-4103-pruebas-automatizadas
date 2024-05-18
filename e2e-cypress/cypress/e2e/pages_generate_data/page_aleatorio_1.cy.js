@@ -1,6 +1,6 @@
-import { LoginPage } from './pages/LoginPage';
-import { PagesPage } from './pages/pages-page';
-import { DashboardPage } from './pages/dashboard-page';
+import { LoginPage } from '../pages/LoginPage';
+import { PagesPage } from '../pages/pages-page';
+import { DashboardPage } from '../pages/dashboard-page';
 
 import { faker } from '@faker-js/faker';
 
