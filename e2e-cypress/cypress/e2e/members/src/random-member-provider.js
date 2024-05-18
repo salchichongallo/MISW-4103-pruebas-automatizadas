@@ -1,8 +1,7 @@
 import { faker } from '@faker-js/faker';
-import { MemberProvider } from './member-provider';
 
-export class RandomMemberProvider extends MemberProvider {
-  getMember() {
+export class RandomMemberProvider {
+  static getMember() {
     return {
       name: faker.person.fullName(),
       email: faker.internet.email(),

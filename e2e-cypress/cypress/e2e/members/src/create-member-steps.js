@@ -3,35 +3,17 @@ import { DashboardPage } from '../../pages/dashboard-page';
 import { MembersPage, MemberForm } from '../../pages/members-page';
 
 export class CreateMember1Steps {
-  constructor(member) {
-    this.member = member;
-
+  constructor() {
     this.loginPage = new LoginPage();
     this.dashboardPage = new DashboardPage();
     this.membersPage = new MembersPage();
     this.memberForm = new MemberForm();
   }
 
-  /** @param {import('../src/member-provider').MemberDataProvider} provider */
-  static async prepare(provider) {
-    const member = await provider.getMember();
-    return new CreateMember1Steps(member);
-  }
-
-  run() {
-    this.givenTheLoginPage().andISignIn().andIWaitForTheDashboard();
-
-    this.whenINavigateToMembersPage()
-      .andIClickOnNewMember()
-      .andFillTheMemberForm()
-      .andIClickCreate();
-
-    this.thenINavigateToMembersPage().thenIShouldSeeTheMemberOnTheList();
-  }
-
-  givenTheLoginPage() {
-    this.loginPage.visit();
-    return this;
+  static givenTheLoginPage() {
+    const steps = new CreateMember1Steps();
+    steps.loginPage.visit();
+    return steps;
   }
 
   andISignIn() {
@@ -56,12 +38,12 @@ export class CreateMember1Steps {
     return this;
   }
 
-  andFillTheMemberForm() {
-    this.memberForm.setName(this.member.name);
-    this.memberForm.setEmail(this.member.email);
-    this.memberForm.setLabels(this.member.labels);
-    this.memberForm.setNote(this.member.note);
-    this.memberForm.toggleNewsletter(this.member.subscribed);
+  andFillTheMemberForm(member) {
+    this.memberForm.setName(member.name);
+    this.memberForm.setEmail(member.email);
+    this.memberForm.setLabels(member.labels);
+    this.memberForm.setNote(member.note);
+    this.memberForm.toggleNewsletter(member.subscribed);
     return this;
   }
 
@@ -74,9 +56,9 @@ export class CreateMember1Steps {
     return this.whenINavigateToMembersPage();
   }
 
-  thenIShouldSeeTheMemberOnTheList() {
+  thenIShouldSeeTheMemberOnTheList(member) {
     cy.get('.gh-members-list-row')
-      .should('contain', this.member.name)
-      .and('contain', this.member.email);
+      .should('contain', member.name)
+      .and('contain', member.email);
   }
 }

@@ -1,14 +1,12 @@
-import { MemberProvider } from './member-provider';
-
-export class PrioriMemberProvider extends MemberProvider {
-  async getMember() {
+export class PrioriMemberProvider {
+  static async getMember() {
     const member = await this.getMockarooMember();
     member.labels = member.labels.split(' ');
     member.note = member.note.slice(0, 500);
     return member;
   }
 
-  async getMockarooMember() {
+  static async getMockarooMember() {
     const myHeaders = new Headers();
     myHeaders.append('accept', 'application/json');
     myHeaders.append('cache-control', 'no-cache');

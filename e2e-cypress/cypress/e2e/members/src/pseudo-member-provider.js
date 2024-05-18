@@ -1,8 +1,7 @@
 import { faker } from '@faker-js/faker';
-import { MemberProvider } from './member-provider';
 
-export class PseudoMemberProvider extends MemberProvider {
-  getMember() {
+export class PseudoMemberProvider {
+  static async getMember() {
     const firstName = faker.person.firstName();
     const lastName = faker.person.lastName();
     const name = faker.person.fullName({ firstName, lastName });
