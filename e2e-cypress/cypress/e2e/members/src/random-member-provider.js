@@ -1,12 +1,16 @@
 import { faker } from '@faker-js/faker';
 
 export class RandomMemberProvider {
-  static getMember({ longName = false, invalidEmail = false } = {}) {
+  static getMember({
+    longName = false,
+    invalidEmail = false,
+    maxNote = false,
+  } = {}) {
     return {
       name: this.getName(longName),
       email: this.getEmail(invalidEmail),
       labels: faker.word.words({ count: { min: 1, max: 10 } }).split(' '),
-      note: faker.word.words({ count: { min: 5, max: 100 } }).slice(0, 500),
+      note: this.getNote(maxNote),
       subscribed: faker.datatype.boolean(),
     };
   }
@@ -21,5 +25,10 @@ export class RandomMemberProvider {
   static getEmail(invalid) {
     if (!invalid) return faker.internet.email();
     return faker.internet.email().replace('@', faker.string.symbol(5) + '@');
+  }
+
+  static getNote(maxNote) {
+    if (!maxNote) return faker.lorem.paragraph();
+    return faker.lorem.paragraph(100).slice(0, 500);
   }
 }

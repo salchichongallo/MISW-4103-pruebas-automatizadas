@@ -53,6 +53,11 @@ export class CreateMember1Steps {
     return this;
   }
 
+  andFillNote(note) {
+    this.memberForm.setNote(note);
+    return this;
+  }
+
   andIClickCreate() {
     this.memberForm.clickSave();
     return this;

@@ -1,7 +1,11 @@
 import { faker } from '@faker-js/faker';
 
 export class PrioriMemberProvider {
-  static async getMember({ longName = false, invalidEmail = false } = {}) {
+  static async getMember({
+    longName = false,
+    invalidEmail = false,
+    maxNote = false,
+  } = {}) {
     const member = await this.getMockarooMember();
     member.labels = member.labels.split(' ');
     member.note = member.note.slice(0, 500);
@@ -12,6 +16,10 @@ export class PrioriMemberProvider {
 
     if (invalidEmail) {
       member.email = member.email.replace('@', faker.string.symbol(5) + '@');
+    }
+
+    if (maxNote) {
+      member.note = member.note.repeat(100).slice(0, 500);
     }
 
     return member;
