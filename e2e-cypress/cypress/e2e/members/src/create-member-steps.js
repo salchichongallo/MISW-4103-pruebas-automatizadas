@@ -81,4 +81,24 @@ export class CreateMember1Steps {
     cy.get('.gh-members-list-row').should('contain', email);
     return this;
   }
+
+  thenIShouldSeeMemAlreadyExistsError() {
+    cy.contains('Member already exists.').should('be.visible');
+    return this;
+  }
+
+  thenICancelCreation() {
+    cy.go('back');
+    cy.get('[data-test-leave-button]').click();
+    return this;
+  }
+
+  thenIDeleteMember(email) {
+    this.whenINavigateToMembersPage();
+    cy.contains(email).click();
+    cy.get('[data-test-button="member-actions"]').click();
+    cy.get('[data-test-button="delete-member"]').click();
+    cy.get('[data-test-button="confirm"]').click();
+    return this;
+  }
 }
