@@ -2,6 +2,7 @@ require('dotenv').config();
 const { defineConfig } = require('cypress');
 
 module.exports = defineConfig({
+  chromeWebSecurity: false,
   e2e: {
     baseUrl: process.env.GHOST_BASE_URL || 'http://localhost:2368',
     defaultCommandTimeout: 15_000,
