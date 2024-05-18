@@ -21,7 +21,7 @@ export class PseudoMemberProvider {
 
     let note = faker.lorem.paragraph();
     if (maxNote) {
-      note = faker.lorem.paragraph(100).slice(0, 500);
+      note = faker.lorem.words(500).repeat(50).slice(0, 500);
     }
 
     return {

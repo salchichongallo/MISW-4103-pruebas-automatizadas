@@ -29,6 +29,6 @@ export class RandomMemberProvider {
 
   static getNote(maxNote) {
     if (!maxNote) return faker.lorem.paragraph();
-    return faker.lorem.paragraph(100).slice(0, 500);
+    return faker.lorem.words(500).slice(0, 500);
   }
 }

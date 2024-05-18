@@ -117,4 +117,9 @@ export class CreateMember1Steps {
     cy.contains('Invalid Email.').should('be.visible');
     return this;
   }
+
+  thenIShouldSeeNoteTooLongError() {
+    cy.contains('Note is too long.').should('be.visible');
+    return this;
+  }
 }
