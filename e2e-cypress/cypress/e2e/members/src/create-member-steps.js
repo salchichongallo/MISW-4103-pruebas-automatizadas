@@ -124,4 +124,20 @@ export class CreateMember1Steps {
     cy.contains('Note is too long.').should('be.visible');
     return this;
   }
+
+  thenIShouldSeeNoteUsageOf(total, { screenshot = false } = {}) {
+    cy.contains(`used ${total}`);
+    if (screenshot) cy.step('should see note usage');
+    return this;
+  }
+
+  thenIEditMember(email) {
+    cy.contains(email).click();
+    return this;
+  }
+
+  thenNoteIsEmpty() {
+    cy.get('#member-note').should('have.value', '');
+    return this;
+  }
 }

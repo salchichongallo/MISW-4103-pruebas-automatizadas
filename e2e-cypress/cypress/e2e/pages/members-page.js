@@ -48,7 +48,7 @@ export class MemberForm {
   setNote(note) {
     const textarea = cy.get('#member-note');
     textarea.click({ force: true });
-    textarea.type(note);
+    textarea.clear().type(note);
   }
 
   toggleNewsletter(subscribed) {
