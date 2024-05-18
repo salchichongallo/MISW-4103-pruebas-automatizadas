@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker';
 
 export class PseudoMemberProvider {
-  static getMember({ longName = false } = {}) {
+  static getMember({ longName = false, invalidEmail = false } = {}) {
     const firstName = faker.person.firstName();
     const lastName = faker.person.lastName();
 
@@ -10,7 +10,10 @@ export class PseudoMemberProvider {
       name = name.slice(0, 191);
     }
 
-    const email = faker.internet.email({ firstName, lastName });
+    let email = faker.internet.email({ firstName, lastName });
+    if (invalidEmail) {
+      email = email.replace('@', faker.string.symbol(5) + '@');
+    }
 
     return {
       name,

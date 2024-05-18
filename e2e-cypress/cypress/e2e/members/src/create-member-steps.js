@@ -107,4 +107,9 @@ export class CreateMember1Steps {
     cy.step(name);
     return this;
   }
+
+  thenIShouldSeeEmailInvalidError() {
+    cy.contains('Invalid Email.').should('be.visible');
+    return this;
+  }
 }
