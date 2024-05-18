@@ -47,6 +47,11 @@ export class CreateMember1Steps {
     return this;
   }
 
+  andFillEmail(email) {
+    this.memberForm.setEmail(email);
+    return this;
+  }
+
   andIClickCreate() {
     this.memberForm.clickSave();
     return this;
@@ -69,6 +74,11 @@ export class CreateMember1Steps {
 
   thenIShouldSeeEmailRequiredError() {
     cy.contains('Please enter an email.').should('be.visible');
+    return this;
+  }
+
+  thenIShouldSeeMemberEmailInList(email) {
+    cy.get('.gh-members-list-row').should('contain', email);
     return this;
   }
 }
