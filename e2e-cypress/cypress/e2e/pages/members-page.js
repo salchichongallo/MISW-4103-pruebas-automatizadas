@@ -17,7 +17,10 @@ export class MembersPage {
 
 export class MemberForm {
   setName(name) {
-    cy.get('#member-name').type(name, { force: true });
+    cy.get('#member-name').type(name, {
+      force: true,
+      parseSpecialCharSequences: false,
+    });
   }
 
   clickActions() {
