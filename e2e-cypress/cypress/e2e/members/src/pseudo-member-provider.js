@@ -1,10 +1,15 @@
 import { faker } from '@faker-js/faker';
 
 export class PseudoMemberProvider {
-  static async getMember() {
+  static getMember({ longName = false } = {}) {
     const firstName = faker.person.firstName();
     const lastName = faker.person.lastName();
-    const name = faker.person.fullName({ firstName, lastName });
+
+    let name = faker.person.fullName({ firstName, lastName });
+    if (longName) {
+      name = name.slice(0, 191);
+    }
+
     const email = faker.internet.email({ firstName, lastName });
 
     return {

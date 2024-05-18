@@ -1,8 +1,13 @@
 export class PrioriMemberProvider {
-  static async getMember() {
+  static async getMember({ longName = false } = {}) {
     const member = await this.getMockarooMember();
     member.labels = member.labels.split(' ');
     member.note = member.note.slice(0, 500);
+
+    if (longName) {
+      member.name = member.name.repeat(2).slice(0, 191);
+    }
+
     return member;
   }
 

@@ -38,12 +38,13 @@ export class CreateMember1Steps {
     return this;
   }
 
-  andFillTheMemberForm(member) {
+  andFillTheMemberForm(member, { screenshot = false } = {}) {
     this.memberForm.setName(member.name);
     this.memberForm.setEmail(member.email);
     this.memberForm.setLabels(member.labels);
     this.memberForm.setNote(member.note);
     this.memberForm.toggleNewsletter(member.subscribed);
+    if (screenshot) cy.step('And I fill the member form');
     return this;
   }
 
@@ -99,6 +100,11 @@ export class CreateMember1Steps {
     cy.get('[data-test-button="member-actions"]').click();
     cy.get('[data-test-button="delete-member"]').click();
     cy.get('[data-test-button="confirm"]').click();
+    return this;
+  }
+
+  takeScreenshot(name) {
+    cy.step(name);
     return this;
   }
 }
