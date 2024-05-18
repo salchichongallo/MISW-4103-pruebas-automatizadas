@@ -61,4 +61,14 @@ export class CreateMember1Steps {
       .should('contain', member.name)
       .and('contain', member.email);
   }
+
+  thenIShouldSeeTheSaveFailureButton() {
+    cy.get('[data-test-task-button-state="failure"]').should('be.visible');
+    return this;
+  }
+
+  thenIShouldSeeEmailRequiredError() {
+    cy.contains('Please enter an email.').should('be.visible');
+    return this;
+  }
 }
