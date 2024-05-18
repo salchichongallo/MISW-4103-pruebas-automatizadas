@@ -13,3 +13,30 @@ beforeEach(() => {
 
 it('RANDOM::CREAMEM1 - Member is created properly', () =>
   stepsDefinition.run());
+
+it('RANDOM::CREAMEM2 - Member is created properly', () =>
+  stepsDefinition.run());
+
+it('RANDOM::CREAMEM3 - Member is created properly', () =>
+  stepsDefinition.run());
+
+it('RANDOM::CREAMEM4 - Member is created properly', () =>
+  stepsDefinition.run());
+
+it('RANDOM::CREAMEM5 - Member is created properly', () =>
+  stepsDefinition.run());
+
+it('RANDOM::CREAMEM6 - Member is created properly', () =>
+  stepsDefinition.run());
+
+it('RANDOM::CREAMEM7 - Member is created properly', () =>
+  stepsDefinition.run());
+
+it('RANDOM::CREAMEM8 - Member is created properly', () =>
+  stepsDefinition.run());
+
+it('RANDOM::CREAMEM9 - Member is created properly', () =>
+  stepsDefinition.run());
+
+it('RANDOM::CREAMEM10 - Member is created properly', () =>
+  stepsDefinition.run());
