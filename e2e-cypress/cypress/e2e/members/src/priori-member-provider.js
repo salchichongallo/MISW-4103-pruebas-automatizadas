@@ -6,6 +6,7 @@ export class PrioriMemberProvider {
     invalidEmail = false,
     maxNote = false,
     longEmail = false,
+    longLabel = false,
   } = {}) {
     const member = await this.getMockarooMember();
     member.labels = member.labels.split(' ');
@@ -29,6 +30,12 @@ export class PrioriMemberProvider {
 
     if (maxNote) {
       member.note = member.note.repeat(100).slice(0, 500);
+    }
+
+    if (longLabel) {
+      member.labels = [
+        faker.word.words({ count: { min: 100, max: 120 } }).replace(/\s/g, ''),
+      ];
     }
 
     return member;

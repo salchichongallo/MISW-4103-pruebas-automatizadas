@@ -6,6 +6,7 @@ export class PseudoMemberProvider {
     invalidEmail = false,
     maxNote = false,
     longEmail = false,
+    longLabel = false,
   } = {}) {
     const firstName = faker.person.firstName();
     const lastName = faker.person.lastName();
@@ -33,10 +34,17 @@ export class PseudoMemberProvider {
       note = faker.lorem.words(500).repeat(50).slice(0, 500);
     }
 
+    let labels = faker.word.words({ count: { min: 1, max: 10 } }).split(' ');
+    if (longLabel) {
+      labels = [
+        faker.word.words({ count: { min: 100, max: 120 } }).replace(/\s/g, ''),
+      ];
+    }
+
     return {
       name,
       email,
-      labels: faker.word.words({ count: { min: 1, max: 10 } }).split(' '),
+      labels,
       note: faker.word.words({ count: { min: 5, max: 100 } }).slice(0, 500),
       subscribed: faker.datatype.boolean(),
     };

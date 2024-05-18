@@ -58,8 +58,18 @@ export class CreateMember1Steps {
     return this;
   }
 
+  andFillName(name) {
+    this.memberForm.setName(name);
+    return this;
+  }
+
   andIClickCreate() {
     this.memberForm.clickSave();
+    return this;
+  }
+
+  andFillLabels(labels) {
+    this.memberForm.setLabels(labels);
     return this;
   }
 
@@ -138,6 +148,12 @@ export class CreateMember1Steps {
 
   thenNoteIsEmpty() {
     cy.get('#member-note').should('have.value', '');
+    return this;
+  }
+
+  thenIShouldSeeNameErrorMessage() {
+    cy.get('#member-name + p', { force: true }).should('exist');
+    cy.step('invalid name error message');
     return this;
   }
 }

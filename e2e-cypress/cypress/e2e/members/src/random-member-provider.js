@@ -6,11 +6,12 @@ export class RandomMemberProvider {
     invalidEmail = false,
     maxNote = false,
     longEmail = false,
+    longLabel = false,
   } = {}) {
     return {
       name: this.getName(longName),
       email: this.getEmail(invalidEmail, longEmail),
-      labels: faker.word.words({ count: { min: 1, max: 10 } }).split(' '),
+      labels: this.getLabels(longLabel),
       note: this.getNote(maxNote),
       subscribed: faker.datatype.boolean(),
     };
@@ -42,5 +43,14 @@ export class RandomMemberProvider {
   static getNote(maxNote) {
     if (!maxNote) return faker.lorem.paragraph();
     return faker.lorem.words(500).slice(0, 500);
+  }
+
+  static getLabels(long) {
+    if (!long)
+      return faker.word.words({ count: { min: 1, max: 10 } }).split(' ');
+
+    return [
+      faker.word.words({ count: { min: 100, max: 120 } }).replace(/\s/g, ''),
+    ];
   }
 }
