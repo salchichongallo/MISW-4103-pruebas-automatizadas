@@ -28,7 +28,7 @@ export class TagForm {
   }
 
   setSlug(slug) {
-    cy.get('#tag-slug').type(slug);
+    cy.get('#tag-slug').clear().type(slug);
   }
 
   setDescription(description) {
