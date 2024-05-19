@@ -1,4 +1,4 @@
-import { faker } from '@faker-js/faker';
+import PostSchema from '../../../utils/post_schema.json';
 
 import { PostsPage } from './pages/PostPage';
 import { LoginPage } from './pages/LoginPage';
@@ -8,6 +8,7 @@ describe('Create a post', () => {
     const loginPage = new LoginPage();
     const postsPage = new PostsPage();
     const dashboardPage = new DashboardPage();
+    const randomIndex = Math.floor(Math.random() * PostSchema.length);
 
     beforeEach(() => {
         loginPage.visit();
@@ -20,17 +21,17 @@ describe('Create a post', () => {
         //cy.step('I wait for the dashboard');
     });
 
-    it(`POST-2 - As a user I log in, 
+    it(`POST-2.1 - As a user I log in, 
     enter the Posts section, 
-    create a new Members Only Post whith title and description,
+    create a new Members Only Post whith title and naughty description,
     and validate your Members Only Post`, () => {
         postsPage.visit();
         //cy.step('I navigate to post page');
         postsPage.newPost();
-        const titlePost = faker.word.words({ count: 1 });
+        const titlePost = PostSchema[randomIndex].post_title;
         postsPage.fillTitle(titlePost);
         postsPage.clickDescriptionPost();
-        postsPage.fillDescription(faker.lorem.paragraph());
+        postsPage.fillDescription(PostSchema[randomIndex].post_naughty);
         //cy.step('I type the title');
         postsPage.setVisibility('members');
         //cy.step('I set the visibility to members only');

@@ -11,35 +11,31 @@ describe('Create a post', () => {
 
     beforeEach(() => {
         loginPage.visit();
-        //cy.step('The login page');
         loginPage.fillEmail(Cypress.env('email'));
         loginPage.fillPassword(Cypress.env('password'));
-        //cy.step('I sign-in with "<email>" and "<password>"');
         loginPage.submit();
         dashboardPage.waitFor();
-        //cy.step('I wait for the dashboard');
     });
 
-    it(`POST-2 - As a user I log in, 
-    enter the Posts section, 
-    create a new Members Only Post whith title and description,
-    and validate your Members Only Post`, () => {
+    it(`POST-5 As a user I log in, 
+    I enter the Posts section, 
+    I entered 255 characters in the title, description, and excerpt of a new Post,
+    then verify its creation in the Posts list`, () => {
         postsPage.visit();
-        //cy.step('I navigate to post page');
         postsPage.newPost();
-        const titlePost = faker.word.words({ count: 1 });
+        const titlePost = faker.string.alpha(255);
         postsPage.fillTitle(titlePost);
+    
         postsPage.clickDescriptionPost();
         postsPage.fillDescription(faker.lorem.paragraph());
-        //cy.step('I type the title');
-        postsPage.setVisibility('members');
-        //cy.step('I set the visibility to members only');
+
+        postsPage.clickSettings();
+        postsPage.fillExcerpt(faker.lorem.sentence());
+
         postsPage.publish();
-        //cy.step('I publish the post');
         postsPage.backToEditor();
-        postsPage.visitPublished();
-        //cy.step('I navigate to posts published page');
-        postsPage.verifyPost(titlePost);
-        //cy.step('the post is created and only visible to members');
+        postsPage.visit();
+        postsPage.verifyPost255(titlePost);
+    
     });
 });
