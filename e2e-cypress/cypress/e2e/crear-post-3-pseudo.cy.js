@@ -1,5 +1,3 @@
-import { faker } from '@faker-js/faker';
-
 import { PostsPage } from './pages/PostPage';
 import { LoginPage } from './pages/LoginPage';
 import { DashboardPage } from './pages/dashboard-page';
@@ -8,32 +6,36 @@ describe('CREAPOST3 - Create a postCreate a post', () => {
     const loginPage = new LoginPage();
     const postsPage = new PostsPage();
     const dashboardPage = new DashboardPage();
+    let mockData;
 
-    it(`POST-3 - As a user, I log in, 
-    enter the Posts section, 
-    create a new Post, without publishing it whith title and description and excerpt,
-    and it must appear in the drafts list to be published later`, () => {
+    beforeEach(() => {
+        cy.request('https://my.api.mockaroo.com/post_schema.json?key=69ae4b80').then((response) => {
+        mockData = response.body;
+        });
+        
         loginPage.visit();
-        //cy.step('The login page');
-
         loginPage.fillEmail(Cypress.env('email'));
         loginPage.fillPassword(Cypress.env('password'));
         loginPage.submit();
-        //cy.step('I sign-in with "<email>" and "<password>"');
-
         dashboardPage.waitFor();
-        //cy.step('I wait for the dashboard');
+    });
+
+    it(`POST-3.2 - As a user, I log in, 
+    enter the Posts section, 
+    create a new Post, without publishing it whith title and description and naughty excerpt and naughty slug,
+    and it must appear in the drafts list to be published later`, () => {
 
         postsPage.visit();
         //cy.step('I navigate to post page');
 
-        const titlePost = faker.word.words({ count: 1 });
+        const titlePost = mockData.post_title;
         postsPage.newPost();
         postsPage.fillTitle(titlePost);
         postsPage.clickDescriptionPost();
-        postsPage.fillDescription(faker.lorem.paragraph());
+        postsPage.fillDescription(mockData.post_paragraphs);
         postsPage.clickSettings();
-        postsPage.fillExcerpt(faker.lorem.sentence());
+        postsPage.fillSlug(mockData.post_naughty);
+        postsPage.fillExcerpt(mockData.post_naughty);
         //cy.step('I type the title');
 
         postsPage.backToPosts();

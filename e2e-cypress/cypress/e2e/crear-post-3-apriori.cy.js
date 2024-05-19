@@ -1,18 +1,19 @@
-import { faker } from '@faker-js/faker';
+import PostSchema from '../../../utils/post_schema.json';
 
 import { PostsPage } from './pages/PostPage';
 import { LoginPage } from './pages/LoginPage';
 import { DashboardPage } from './pages/dashboard-page';
 
-describe('CREAPOST4 - Create a post', () => {
+describe('CREAPOST3 - Create a postCreate a post', () => {
     const loginPage = new LoginPage();
     const postsPage = new PostsPage();
     const dashboardPage = new DashboardPage();
+    const randomIndex = Math.floor(Math.random() * PostSchema.length);
 
-    it(`POST-4 - As a user I log in, 
+    it(`POST-3.1 - As a user, I log in, 
     enter the Posts section, 
-    create a new Post whith title and slug, without publishing it 
-    and it should not appear on the published page`, () => {
+    create a new Post, without publishing it whith title and description and naughty excerpt,
+    and it must appear in the drafts list to be published later`, () => {
         loginPage.visit();
         //cy.step('The login page');
 
@@ -27,18 +28,20 @@ describe('CREAPOST4 - Create a post', () => {
         postsPage.visit();
         //cy.step('I navigate to post page');
 
-        const titlePost = faker.word.words({ count: 1 });
+        const titlePost = PostSchema[randomIndex].post_title;
         postsPage.newPost();
         postsPage.fillTitle(titlePost);
+        postsPage.clickDescriptionPost();
+        postsPage.fillDescription(PostSchema[randomIndex].post_paragraphs);
         postsPage.clickSettings();
-        postsPage.fillSlug(faker.lorem.slug());
+        postsPage.fillExcerpt(PostSchema[randomIndex].post_naughty);
         //cy.step('I type the title');
 
         postsPage.backToPosts();
-        postsPage.visitPublished();
-        //cy.step('I navigate to published posts page');
+        postsPage.goToDrafts();
+        //cy.step('I navigate to draft posts page');
 
-        postsPage.verifyPostNotInPublished(titlePost);
-        //cy.step('the post is not listed in the published posts page');
+        postsPage.verifyPost(titlePost);
+        //cy.step('the post is created and listed in the draft posts page');
     });
 });
