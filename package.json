@@ -2,16 +2,12 @@
   "name": "root",
   "private": true,
   "workspaces": [
-    "e2e-cypress",
-    "e2e-kraken"
+    "e2e-cypress"
   ],
   "scripts": {
     "postinstall": "node scripts/postinstall",
-    "kraken:test": "lerna run test --scope e2e-kraken",
     "cy:open": "lerna run cy:open --scope e2e-cypress",
     "test:cypress": "lerna run test --scope e2e-cypress",
-    "cy:open:3429": "lerna run cy:open:3429 --scope e2e-cypress",
-    "test:cypress:3429": "lerna run test:3429 --scope e2e-cypress",
     "format": "prettier -w ."
   },
   "devDependencies": {
