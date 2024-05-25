@@ -57,5 +57,4 @@ function collecScreenshots(ghostVersion) {
   );
 }
 
-collecScreenshots('ghost3429');
 collecScreenshots('ghost5822');
