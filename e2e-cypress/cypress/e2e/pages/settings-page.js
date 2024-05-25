@@ -19,6 +19,7 @@ export class SettingsPage {
         siteTitleField: () => cy.get('label').contains('Site title').parent().find('input'),
         siteDescriptionField: () => cy.get('label').contains('Site description').parent().find('input'),
         saveButtonTitle: () => cy.get('[data-testid="title-and-description"]').contains('button', 'Save'),
+        titleIsEmpty: () => cy.contains('h6', 'Site title').next().should('have.text', ' '),
 
         editButtonLanguage: () => cy.get('[data-testid="publication-language"]').contains('button', 'Edit'),
         siteLanguageField: () => cy.get('label').contains('Site language').parent().find('input'),
@@ -33,7 +34,15 @@ export class SettingsPage {
         siteNameNewsletters: () => cy.get('label').contains(`Name`).parent().find('input'),
         siteDescriptionNewsletters: () => cy.get('label').contains(`Description`).parent().find('textarea'),
         saveButtonNewsletters: () => cy.contains('button', 'Create'),
-        closButtonNewsletters: () => cy.contains('button', 'Close')
+        closButtonNewsletters: () => cy.contains('button', 'Close'),
+
+        invitePeopleButton: () => cy.contains('button', 'Invite people'),
+        emailAddressField: () => cy.get('label').contains('Email address').parent().find('input'),
+        sendInvitationButton: () => cy.contains('button', 'Send invitation now'),
+        alertMessageError: () => cy.contains('Please enter a valid email address.'),
+
+
+
     }
 
     visit() {
@@ -163,5 +172,26 @@ export class SettingsPage {
         this.elements.closButtonNewsletters().click();
     }
 
+    clickInvitePeople() {
+      this.elements.invitePeopleButton().click();
+      cy.wait(1000);
+    }
+
+    fillEmail(email) {
+      this.elements.emailAddressField().clear().type(email);
+      cy.wait(1000);
+  }
+  clickSendInvitation() {
+    this.elements.sendInvitationButton().click();
+    cy.wait(1000);
+}
+
+  alertMessageStaff() {
+    this.elements.alertMessageError().should('be.visible');
+  }
+
+  isEmptyTitle() {
+    this.elements.titleIsEmpty();
+  }
 
 }
