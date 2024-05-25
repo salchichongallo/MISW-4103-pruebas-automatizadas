@@ -66,6 +66,6 @@ Para Cypress, ejecute: `npm run test:cypress`
 
 ---
 
-#### Wiki semana 6
+#### Wiki Semana 8
 
-[Semana 6](https://github.com/salchichongallo/MISW-4103-pruebas-automatizadas/wiki/Semana-6)
+Los entregables se encuentran en el directorio `entrega-final-semana-8/` y en la [Wiki Semana 8](https://github.com/salchichongallo/MISW-4103-pruebas-automatizadas/wiki/Semana-8)
